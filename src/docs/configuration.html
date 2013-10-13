@@ -1,36 +1,60 @@
 <div id="main">
-  global flags:
+  <section id="flags">
+    <div class="page-header">
+     <h1>Flags</h1>
+   </div>
+   <p class="lead">Finatra uses <a href="http://twitter.github.io/twitter-server/Features.html#flags">Flags</a> for configuration, passed as arguments:</p>
+   <pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.port=':7070'</pre>
+
+   <p class="lead">Here's a full list of Flags available: (this is <code>-usage</code> output)</p>
+  <pre class="prettyprint">
+global flags:
   -com.twitter.finatra.config.adminPort=':9990': Admin/Stats Port
-
   -com.twitter.finatra.config.appName='finatra': Name of server
-
   -com.twitter.finatra.config.assetPath='/public': path to assets
-
   -com.twitter.finatra.config.certificatePath='': path to SSL certificate
-
   -com.twitter.finatra.config.docRoot='src/main/resources': path to docroot
-
   -com.twitter.finatra.config.env='development': Environment
-
   -com.twitter.finatra.config.keyPath='': path to SSL key
-
   -com.twitter.finatra.config.logLevel='INFO': log level
-
   -com.twitter.finatra.config.logNode='finatra': Logging node
-
   -com.twitter.finatra.config.logPath='logs/finatra.log': path to log
-
   -com.twitter.finatra.config.maxRequestSize='5': maximum request size (in megabytes)
-
   -com.twitter.finatra.config.pidEnabled='false': whether to write pid file
-
   -com.twitter.finatra.config.pidPath='finatra.pid': path to pid file
-
   -com.twitter.finatra.config.port=':7070': Http Port
-
   -com.twitter.finatra.config.sslPort=':7443': Port for SSL
-
   -com.twitter.finatra.config.templatePath='/': path to templates
+</pre>
+</section>
+
+<p class="lead">You can define your own flags inside <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>  for any application specific configuration:</p>
+<pre class="prettyprint">
+class MyServer extends FinatraServer {
+  val thingFlag = flag("thingEnabled", true, "Is the thing enabled")
+
+  if (thingFlag()) {
+    println("thing is enabled")
+  }
+}
+</pre>
+
+<p class="lead">Now if we run <code>-usage</code>, we'll see:</p>
+
+<pre class="prettyprint">
+com.twitter.finatra_example.App:
+  -help='false': Show this help
+  -thingEnabled='true': Is the thing enabled
+
+global flags:
+  -com.twitter.finatra.config.adminPort=':9990': Admin/Stats Port
+  -com.twitter.finatra.config.assetPath='/public': path to assets
+  -com.twitter.finatra.config.certificatePath='': path to SSL certificate
+  -com.twitter.finatra.config.docRoot='src/main/resources': path to docroot
+  -com.twitter.finatra.config.env='development': Environment
+  -com.twitter.finatra.config.keyPath='': path to SSL key
+  ...
+</pre>
 </div>
 <div id="nav">
   <ul class="nav">
