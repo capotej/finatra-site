@@ -33,6 +33,24 @@
           <h2>Setup</h2>
         </div>
 
+        <p class="lead">
+          To get started, we have to define at least one <code>Controller</code> and register it with <code>FinatraServer</code>, like so:
+        </p>
+        <pre class="prettyprint">
+class Example extends Controller {
+  get("/") { request =>
+    render.plain("hi").toFuture
+  }
+}
+
+class MyServer extends FinatraServer {
+  val controller = new Example()
+  register(controller)
+}</pre>
+
+<p class="lead">You can call <code>register</code> multiple times to register various controllers.
+Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code>Finatra</code> implements <code>main</code> for you.</p>
+      </section>
 
 
 
@@ -80,6 +98,33 @@ get("/home") { request =>
 get("/dog-search") { request =>
   route.post("/search", Map("q" -> "dogs"))
 }</pre>
+
+<p class="lead">Customize what happens when a route isn't found using <code>notFound</code>:</p>
+<pre class="prettyprint">
+notFound { request =>
+  render.status(404).plain("not found yo").toFuture
+}</pre>
+<p class="lead">Or, what happens when exceptions occur with <code>error:</code></p>
+<pre class="prettyprint">
+class Unauthorized extends Exception
+
+error { request =>
+    request.error match {
+      case Some(e:ArithmeticException) =>
+        render.status(500).plain("whoops, divide by zero!").toFuture
+      case Some(e:Unauthorized) =>
+        render.status(401).plain("Not Authorized!").toFuture
+      case Some(e:UnsupportedMediaType) =>
+        render.status(415).plain("Unsupported Media Type!").toFuture
+      case _ =>
+        render.status(500).plain("Something went wrong!").toFuture
+    }
+}
+
+get("/secret") { request =>
+  throw(new Unauthorized)
+}</pre>
+
       </section>
 
 
@@ -341,8 +386,8 @@ get("/") { request =>
 
 <pre class="prettyprint">
 get("/") { request =>
-  val c = Cookie("Biz", "Baz")
-  c.secure(true)
+  val c = DefaultCookie("Biz", "Baz")
+  c.setSecure(true)
   render.plain("get:path").cookie(c).toFuture
 }</pre>
 
@@ -355,10 +400,23 @@ get("/") { request =>
 
 
 
-    <section id="uploads">
-      <div class="page-header">
-        <h1>Uploads</h1>
-      </div>
+  <section id="uploads">
+    <div class="page-header">
+      <h1>Uploads</h1>
+    </div>
+    <p class="lead">Uploads are fully supported in the <code>request.multiParams</code> object. </p>
+<pre class="prettyprint">
+post("/profile") { request =>
+  request.multiParams.get("avatar").map { avatar =>
+    println("content type is " + avatar.contentType)
+    avatar.writeToFile("/tmp/avatar")
+  }
+  render.plain("ok").toFuture
+}</pre>
+
+<p class="lead">See the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/MultipartItem.scala">MultipartItem</a></code> class for more details.</p>
+
+
     </section>
 
 
@@ -372,6 +430,8 @@ get("/") { request =>
       <div class="page-header">
         <h1>Filters</h1>
       </div>
+      <p class="lead">You can register Filters just like you can controllers and they will run before any Controller gets hit.</p>
+
     </section>
 
 
@@ -383,7 +443,9 @@ get("/") { request =>
       <div class="page-header">
         <h1>Logging</h1>
       </div>
+      <p class="lead">There is a logger object available inside every Controller</p>
     </section>
+
 
 
 
