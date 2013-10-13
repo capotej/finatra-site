@@ -21,6 +21,10 @@ h3 code {
   font-weight: normal;
 }
 
+code {
+  font-size: 16px;
+}
+
 
 
 /* Tweak navbar brand link to be super sleek

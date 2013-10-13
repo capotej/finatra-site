@@ -63,6 +63,7 @@
     </div>
     <div class="span3 bs-docs-sidebar">
       <ul class="nav nav-list bs-docs-sidenav affix">
+        <li><a href="#setup"><i class="icon-chevron-right"></i>Setup</a></li>
         <li><a href="#routing"><i class="icon-chevron-right"></i>Routing</a></li>
         <li><a href="#requests"><i class="icon-chevron-right"></i>Requests</a></li>
         <li><a href="#futures"><i class="icon-chevron-right"></i>Futures</a></li>
@@ -81,6 +82,16 @@
       </ul>
     </div>
     <div class="span9">
+
+
+
+
+      <section id="setup">
+        <div class="page-header">
+          <h2>Setup</h2>
+        </div>
+
+
 
 
       <section id="routing">
@@ -125,6 +136,12 @@ get(&#34;/home&#34;) { request =&gt;
 }</pre>
       </section>
 
+
+
+
+
+
+
     <section id="requests">
       <div class="page-header">
         <h1>Request</h1>
@@ -136,9 +153,14 @@ get(&#34;/home&#34;) { request =&gt;
   println(request.userAgent)
   render.plain(&#34;done&#34;).toFuture
 }</pre>
-<p class="lead">See <a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a> for more information.</p>
+<p class="lead">See <code><a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a></code> for more information.</p>
 
     </section>
+
+
+
+
+
 
     <section id="futures">
       <div class="page-header">
@@ -151,28 +173,257 @@ get(&#34;/home&#34;) { request =&gt;
     render.plain(&#34;the time is: &#34; + currentTime)
   }
 }</pre>
-<p class="lead">Note that we did not use <code>.toFuture</code> above because we are already within a <code>Future</code></p>
+<p class="lead">Note that we did not use <code>.toFuture</code> above because we are already within a <code>Future</code>.</p>
 
 
     </section>
+
+
+
+
+
+
+
+
 
     <section id="params">
       <div class="page-header">
         <h1>Params</h1>
       </div>
-      <p class="lead">You&#39;ll notice a <code>request</code> object is passed into your routing code, this has useful information about the request:</p>
-<pre class="prettyprint">get(&#34;/request-info&#34;) { request =&gt;
-  println(request.remoteAddress)
-  println(request.path)
-  println(request.userAgent)
-  render.plain(&#34;done&#34;).toFuture
+      <p class="lead">Query parameters are supported through <code>request.params</code>. This supports all the usual <code>Map</code> methods you are used to, like <code>getOrElse</code>:</p>
+<pre class="prettyprint">get(&#34;/search&#34;) { request =&gt;
+  val query = request.params.getOrElse(&#34;q&#34;, &#34;dogs&#34;)
+  render.plain(&#34;you searched for &#34; + query).toFuture
 }</pre>
-<p class="lead">See <a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a> for more information.</p>
+<p class="lead">Parameters can also be extracted from routes just like in <a href="http://sinatrarb.com">Sinatra</a>. These are stored in <code>request.routeParams</code>:</p>
+<pre class="prettyprint">get(&#34;/hello/:name&#34;) { request =&gt;
+  val name = request.routeParams.getOrElse(&#34;name&#34;, &#34;john doe&#34;)
+  render.plain(&#34;you searced for &#34; + query).toFuture
+}</pre>
+
+
     </section>
 
 
 
-  </div>
+
+    <section id="responses">
+      <div class="page-header">
+        <h1>Responses</h1>
+      </div>
+      <p class="lead">The <code>render</code> object is a powerful <code>Response</code> builder that allows customizing the response in various ways:</p>
+<pre class="prettyprint">get(&#34;/i-want-json&#34;) { request =&gt;
+  render.json(Map(&#34;foo&#34; -&gt; &#34;bar&#34;)).toFuture
+}</pre>
+<p class="lead">This will automatically set the <code>Content-Type</code> as <code>application/json</code>.</p>
+
+
+<pre class="prettyprint">get(&#34;/i-want-html&#34;) { request =&gt;
+  render.html(&#34;&lt;h1&gt;hi&lt;/h1&gt;&#34;).toFuture
+}</pre>
+<p class="lead">Like the example above, this sets <code>Content-Type</code> to <code>text/html</code>. We can also set it to whatever we want:</p>
+
+<pre class="prettyprint">get(&#34;/i-want-html&#34;) { request =&gt;
+  render.body(&#34;custom response&#34;).contentType(&#34;application/mine&#34;).toFuture
+}</pre>
+
+<p class="lead">Because it&#39;s a builder, you can chain the methods in any order. Let&#39;s add a <code>201</code> to that response:</p>
+
+<pre class="prettyprint">get(&#34;/i-want-html&#34;) { request =&gt;
+  render.body(&#34;custom response&#34;)
+        .contentType(&#34;application/mine&#34;)
+        .status(201)
+        .toFuture
+}</pre>
+
+<p class="lead">This is the same as:</p>
+
+<pre class="prettyprint">get(&#34;/i-want-custom&#34;) { request =&gt;
+  render.status(201)
+        .contentType(&#34;application/mine&#34;)
+        .body(&#34;custom response&#34;)
+        .toFuture
+}</pre>
+
+<p class="lead">Sending a byte array:</p>
+
+<pre class="prettyprint">get(&#34;/i-want-binary&#34;) { request =&gt;
+  render.status(201)
+        .contentType(&#34;application/octet-stream&#34;)
+        .body(Array[Byte](12, 41, 51))
+        .toFuture
+}</pre>
+
+<p class="lead">It&#39;s also possible to respond conditionally based on <code>Content-Type</code> or <code>Accept</code> header:</p>
+<pre class="prettyprint">get(&#34;/api/thing&#34;) { request =&gt;
+  respondTo(request) {
+    case _:Html =&gt; render.html(&#34;&lt;p&gt;html response&lt;/p&gt;&#34;).toFuture
+    case _:Json =&gt; render.json(Map(&#34;value&#34; -&gt; &#34;an json response&#34;)).toFuture
+    case _:All =&gt; render.plain(&#34;default fallback response&#34;).toFuture
+  }
+}</pre>
+
+<p class="lead">See the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Response.scala">Response</a></code> class for more details.</p>
+    </section>
+
+
+
+
+    <section id="templates">
+      <div class="page-header">
+        <h1>Templates</h1>
+      </div>
+      <p class="lead">Mustache is natively supported through <a href="https://github.com/spullara/mustache.java">Mustache.java</a>. First a <code>View</code> class must be defined:</p>
+<pre class="prettyprint">class MyView extends View {
+  val template = &#34;my_view.mustache&#34;
+  val some_val = &#34;random value here&#34;
+}
+</pre>
+
+<p class="lead">By default, this will look in <code>src/main/resources/templates/my_view.mustache</code> for the template source, which could be:</p>
+
+<pre class="prettyprint"> &lt;h1&gt;Some value is {{some_val}}&lt;/h1&gt;
+</pre>
+
+<p class="lead">Then <code>render.view</code> can be used to display it:</p>
+<pre class="prettyprint">get(&#34;/template&#34;) { request =&gt;
+  val myView = new MyView
+  render.view(myView).toFuture
+}</pre>
+
+<p class="lead">You can imagine more complex views taking constructor arguments and doing things conditionally from request input.</p>
+
+    </section>
+
+
+
+
+
+    <section id="assets">
+      <div class="page-header">
+        <h1>Assets</h1>
+      </div>
+      <p class="lead">Theres an embedded static file server which will serve out of <code>src/main/resources/public</code> by default. It&#39;s also possible to render assets inside of routes:</p>
+<pre class="prettyprint">get(&#34;/deal-with-it&#34;) { request =&gt;
+  render.static(&#34;/dealwithit.gif&#34;)
+}</pre>
+<p class="lead">It&#39;s important to note that the <code>Router</code> runs <i>before</i> the file server, allowing you to dynamically intercept static assets:</p>
+
+<pre class="prettyprint">get(&#34;/file.txt&#34;) { request =&gt;
+  render.plain(&#34;this is the file&#34;).toFuture
+}</pre>
+
+    </section>
+
+
+
+
+
+    <section id="headers">
+      <div class="page-header">
+        <h1>Headers</h1>
+      </div>
+      <p class="lead">To read headers, use <code>request.headers</code>; much like <code>request.params</code>, this is also a <code>Map</code></p>
+<pre class="prettyprint">get(&#34;/&#34;) { request =&gt;
+  val isFoo = request.headers.getOrElse(&#34;X-Foo&#34;, &#34;1&#34;)
+  render.plain(&#34;X-Foo status: &#34; + isFoo).toFuture
+}</pre>
+<p class="lead">Setting headers is available on the <code>Response</code> builder:</p>
+
+<pre class="prettyprint">get(&#34;/&#34;) { request =&gt;
+  render.plain(&#34;hi&#34;).header(&#34;Foo&#34;, &#34;Bar&#34;).toFuture
+}</pre>
+
+<p class="lead">You can call <code>header</code> multiple times or pass a map to <code>headers</code>:</p>
+
+<pre class="prettyprint">get(&#34;/&#34;) { request =&gt;
+  render.plain(&#34;hi&#34;)
+        .header(&#34;Foo&#34;, &#34;Bar&#34;)
+        .header(&#34;Biz&#34;, &#34;Baz&#34;)
+        .toFuture
+}</pre>
+
+<pre class="prettyprint">get(&#34;/&#34;) { request =&gt;
+  render.plain(&#34;hi&#34;)
+        .headers(Map(&#34;Foo&#34; -&gt; &#34;Bar&#34;, &#34;Biz&#34; -&gt; &#34;Baz&#34;))
+        .toFuture
+}</pre>
+
+    </section>
+
+
+    <section id="cookies">
+      <div class="page-header">
+        <h1>Cookies</h1>
+      </div>
+      <p class="lead">Cookies are much like <code>Headers</code>, read from <code>request</code> and set via <code>render</code>:</p>
+    </section>
+
+
+
+
+
+
+    <section id="uploads">
+      <div class="page-header">
+        <h1>Uploads</h1>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section id="filters">
+      <div class="page-header">
+        <h1>Filters</h1>
+      </div>
+    </section>
+
+
+
+
+
+
+    <section id="logging">
+      <div class="page-header">
+        <h1>Logging</h1>
+      </div>
+    </section>
+
+
+
+
+
+
+
+    <section id="stats">
+      <div class="page-header">
+        <h1>Stats</h1>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section id="testing">
+      <div class="page-header">
+        <h1>Deployment</h1>
+      </div>
+    </section>
+
+
+
+
+
+  </section></div>
 </div>
 </div>
     </div>
