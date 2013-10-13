@@ -6,36 +6,151 @@
     <div class="span3 bs-docs-sidebar">
       <ul class="nav nav-list bs-docs-sidenav affix">
         <li><a href="#routing"><i class="icon-chevron-right"></i>Routing</a></li>
+        <li><a href="#requests"><i class="icon-chevron-right"></i>Requests</a></li>
+        <li><a href="#futures"><i class="icon-chevron-right"></i>Futures</a></li>
         <li><a href="#params"><i class="icon-chevron-right"></i>Params</a></li>
+        <li><a href="#responses"><i class="icon-chevron-right"></i>Responses</a></li>
+        <li><a href="#templates"><i class="icon-chevron-right"></i>Templates</a></li>
+        <li><a href="#assets"><i class="icon-chevron-right"></i>Assets</a></li>
+        <li><a href="#headers"><i class="icon-chevron-right"></i>Headers</a></li>
+        <li><a href="#cookies"><i class="icon-chevron-right"></i>Cookies</a></li>
+        <li><a href="#uploads"><i class="icon-chevron-right"></i>Uploads</a></li>
+        <li><a href="#filters"><i class="icon-chevron-right"></i>Filters</a></li>
+        <li><a href="#filters"><i class="icon-chevron-right"></i>Logging</a></li>
+        <li><a href="#filters"><i class="icon-chevron-right"></i>Stats</a></li>
+        <li><a href="#testing"><i class="icon-chevron-right"></i>Testing</a></li>
+        <li><a href="#deployment"><i class="icon-chevron-right"></i>Deployment</a></li>
       </ul>
     </div>
     <div class="span9">
+
+
+
+
+
+
 
 
       <section id="routing">
         <div class="page-header">
           <h2>Routing</h2>
         </div>
+        <p class="lead">Routes belong to a Controller. When Finatra receives a request for a particular URL, it will scan all registered controllers and dispatch to the first one that contains a match. For example:
+        </p>
         <pre class="prettyprint">
-get("/hello/:name") { request =>
-  val name = request.routeParams("name").getOrElse("default user")
-  render.plain("hello " + name).toFuture
+class Example extends Controller {
+  get("/") { request =>
+    render.plain("hi").toFuture
+  }
 }</pre>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+        <p class="lead">This code will run when a <code>GET</code> to <code>/</code> is sent and return "hi" in plaintext. All <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP verbs</a> are supported:</p>
+
+        <pre class="prettyprint">
+get("/users") { request =>
+  ...
+}
+
+post("/users") { request =>
+  ...
+}
+
+put("/users") { request =>
+  ...
+}
+
+options("/users") { request =>
+  ...
+}</pre>
+        <p class="lead">It's also possible render a route from another route, like:</p>
+        <pre class="prettyprint">
+get("/") { request =>
+  route.get("/home")
+}
+
+get("/home") { request =>
+  ...
+}</pre>
+<p class="lead">You can even pass params through:</p>
+<pre class="prettyprint">
+get("/dog-search") { request =>
+  route.post("/search", Map("q" -> "dogs"))
+}</pre>
+      </section>
+
+
+
+
+
+
+
+    <section id="requests">
+      <div class="page-header">
+        <h1>Request</h1>
+      </div>
+      <p class="lead">You'll notice a <code>request</code> object is passed into your routing code, this has useful information about the request:</p>
+<pre class="prettyprint">
+get("/request-info") { request =>
+  println(request.remoteAddress)
+  println(request.path)
+  println(request.userAgent)
+  render.plain("done").toFuture
+}</pre>
+<p class="lead">See <a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a> for more information.</p>
+
     </section>
+
+
+
+
+
+
+    <section id="futures">
+      <div class="page-header">
+        <h1>Futures</h1>
+      </div>
+      <p class="lead">Every route is expected to a return a <a href="https://github.com/twitter/finagle#Using%20Future%20Objects">Future[Response]</a>, hence all the <code>.toFuture</code> calls you've been seeing in our examples. This is an important distinction from synchronous frameworks as all your routes may be executed concurrently instead of one at a time. It's especially useful when dealing with libraries/services that return <code>Future</code>'s themselves (like a finagle-http client):</p>
+<pre class="prettyprint">
+get("/current-time") { request =>
+  httpClient.apply("/api/time.txt") map { response =>
+    val currentTime = response.contentString()
+    render.plain("the time is: " + currentTime)
+  }
+}</pre>
+<p class="lead">Note that we did not use <code>.toFuture</code> above because we are already within a <code>Future</code></p>
+
+
+    </section>
+
+
+
+
+
+
+
+
 
     <section id="params">
       <div class="page-header">
         <h1>Params</h1>
       </div>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">You'll notice a <code>request</code> object is passed into your routing code, this has useful information about the request:</p>
+<pre class="prettyprint">
+get("/request-info") { request =>
+  println(request.remoteAddress)
+  println(request.path)
+  println(request.userAgent)
+  render.plain("done").toFuture
+}</pre>
+<p class="lead">See <a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a> for more information.</p>
     </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -45,7 +160,7 @@ get("/hello/:name") { request =>
 </div>
 <div id="nav">
   <ul class="nav">
-    <li><a href="/">Home</a></li>
+    <li><a class="brand" href="/">Finatra</a></li>
     <li><a href="/docs/tutorial.html">Tutorial</a></li>
     <li class="active"><a href="/docs/index.html">Documentation</a></li>
     <li><a href="/docs/configuration.html">Configuring</a></li>

@@ -43,7 +43,7 @@
           <div class="nav-collapse collapse">
             <div id="nav">
   <ul class="nav">
-    <li><a href="/">Home</a></li>
+    <li><a class="brand" href="/">Finatra</a></li>
     <li><a href="/docs/tutorial.html">Tutorial</a></li>
     <li class="active"><a href="/docs/index.html">Documentation</a></li>
     <li><a href="/docs/configuration.html">Configuring</a></li>
@@ -64,7 +64,20 @@
     <div class="span3 bs-docs-sidebar">
       <ul class="nav nav-list bs-docs-sidenav affix">
         <li><a href="#routing"><i class="icon-chevron-right"></i>Routing</a></li>
+        <li><a href="#requests"><i class="icon-chevron-right"></i>Requests</a></li>
+        <li><a href="#futures"><i class="icon-chevron-right"></i>Futures</a></li>
         <li><a href="#params"><i class="icon-chevron-right"></i>Params</a></li>
+        <li><a href="#responses"><i class="icon-chevron-right"></i>Responses</a></li>
+        <li><a href="#templates"><i class="icon-chevron-right"></i>Templates</a></li>
+        <li><a href="#assets"><i class="icon-chevron-right"></i>Assets</a></li>
+        <li><a href="#headers"><i class="icon-chevron-right"></i>Headers</a></li>
+        <li><a href="#cookies"><i class="icon-chevron-right"></i>Cookies</a></li>
+        <li><a href="#uploads"><i class="icon-chevron-right"></i>Uploads</a></li>
+        <li><a href="#filters"><i class="icon-chevron-right"></i>Filters</a></li>
+        <li><a href="#filters"><i class="icon-chevron-right"></i>Logging</a></li>
+        <li><a href="#filters"><i class="icon-chevron-right"></i>Stats</a></li>
+        <li><a href="#testing"><i class="icon-chevron-right"></i>Testing</a></li>
+        <li><a href="#deployment"><i class="icon-chevron-right"></i>Deployment</a></li>
       </ul>
     </div>
     <div class="span9">
@@ -74,24 +87,87 @@
         <div class="page-header">
           <h2>Routing</h2>
         </div>
-        <pre class="prettyprint">get(&#34;/hello/:name&#34;) { request =&gt;
-  val name = request.routeParams(&#34;name&#34;).getOrElse(&#34;default user&#34;)
-  render.plain(&#34;hello &#34; + name).toFuture
+        <p class="lead">Routes belong to a Controller. When Finatra receives a request for a particular URL, it will scan all registered controllers and dispatch to the first one that contains a match. For example:
+        </p>
+        <pre class="prettyprint">class Example extends Controller {
+  get(&#34;/&#34;) { request =&gt;
+    render.plain(&#34;hi&#34;).toFuture
+  }
 }</pre>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
+        <p class="lead">This code will run when a <code>GET</code> to <code>/</code> is sent and return &#34;hi&#34; in plaintext. All <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP verbs</a> are supported:</p>
+
+        <pre class="prettyprint">get(&#34;/users&#34;) { request =&gt;
+  ...
+}
+
+post(&#34;/users&#34;) { request =&gt;
+  ...
+}
+
+put(&#34;/users&#34;) { request =&gt;
+  ...
+}
+
+options(&#34;/users&#34;) { request =&gt;
+  ...
+}</pre>
+        <p class="lead">It&#39;s also possible render a route from another route, like:</p>
+        <pre class="prettyprint">get(&#34;/&#34;) { request =&gt;
+  route.get(&#34;/home&#34;)
+}
+
+get(&#34;/home&#34;) { request =&gt;
+  ...
+}</pre>
+<p class="lead">You can even pass params through:</p>
+<pre class="prettyprint">get(&#34;/dog-search&#34;) { request =&gt;
+  route.post(&#34;/search&#34;, Map(&#34;q&#34; -&gt; &#34;dogs&#34;))
+}</pre>
+      </section>
+
+    <section id="requests">
+      <div class="page-header">
+        <h1>Request</h1>
+      </div>
+      <p class="lead">You&#39;ll notice a <code>request</code> object is passed into your routing code, this has useful information about the request:</p>
+<pre class="prettyprint">get(&#34;/request-info&#34;) { request =&gt;
+  println(request.remoteAddress)
+  println(request.path)
+  println(request.userAgent)
+  render.plain(&#34;done&#34;).toFuture
+}</pre>
+<p class="lead">See <a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a> for more information.</p>
+
+    </section>
+
+    <section id="futures">
+      <div class="page-header">
+        <h1>Futures</h1>
+      </div>
+      <p class="lead">Every route is expected to a return a <a href="https://github.com/twitter/finagle#Using%20Future%20Objects">Future[Response]</a>, hence all the <code>.toFuture</code> calls you&#39;ve been seeing in our examples. This is an important distinction from synchronous frameworks as all your routes may be executed concurrently instead of one at a time. It&#39;s especially useful when dealing with libraries/services that return <code>Future</code>&#39;s themselves (like a finagle-http client):</p>
+<pre class="prettyprint">get(&#34;/current-time&#34;) { request =&gt;
+  httpClient.apply(&#34;/api/time.txt&#34;) map { response =&gt;
+    val currentTime = response.contentString()
+    render.plain(&#34;the time is: &#34; + currentTime)
+  }
+}</pre>
+<p class="lead">Note that we did not use <code>.toFuture</code> above because we are already within a <code>Future</code></p>
+
+
     </section>
 
     <section id="params">
       <div class="page-header">
         <h1>Params</h1>
       </div>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
-      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won&#39;t walk through the source files here, but they are available for download. We&#39;ll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">You&#39;ll notice a <code>request</code> object is passed into your routing code, this has useful information about the request:</p>
+<pre class="prettyprint">get(&#34;/request-info&#34;) { request =&gt;
+  println(request.remoteAddress)
+  println(request.path)
+  println(request.userAgent)
+  render.plain(&#34;done&#34;).toFuture
+}</pre>
+<p class="lead">See <a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a> for more information.</p>
     </section>
 
 
@@ -108,7 +184,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/prettify.js"></script>
-    <script src="/assets/js/lang-scala.js"></script>
   
 
 </body></html>
