@@ -79,10 +79,10 @@
         <li><a href="#cookies"><i class="icon-chevron-right"></i>Cookies</a></li>
         <li><a href="#uploads"><i class="icon-chevron-right"></i>Uploads</a></li>
         <li><a href="#filters"><i class="icon-chevron-right"></i>Filters</a></li>
-        <li><a href="#filters"><i class="icon-chevron-right"></i>Logging</a></li>
-        <li><a href="#filters"><i class="icon-chevron-right"></i>Stats</a></li>
+        <li><a href="#logging"><i class="icon-chevron-right"></i>Logging</a></li>
+        <li><a href="#stats"><i class="icon-chevron-right"></i>Stats</a></li>
         <li><a href="#testing"><i class="icon-chevron-right"></i>Testing</a></li>
-        <li><a href="#deployment"><i class="icon-chevron-right"></i>Deployment</a></li>
+        <li><a href="#deploying"><i class="icon-chevron-right"></i>Deploying</a></li>
       </ul>
     </div>
     <div class="span9">
@@ -96,7 +96,7 @@
         </div>
 
         <p class="lead">
-          To get started, we have to define at least one <code>Controller</code> and register it with <code>FinatraServer</code>, like so:
+          To get started, we have to define at least one <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code> and register it with <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>, like so:
         </p>
         <pre class="prettyprint">class Example extends Controller {
   get(&#34;/&#34;) { request =&gt;
@@ -110,7 +110,7 @@ class MyServer extends FinatraServer {
 }</pre>
 
 <p class="lead">You can call <code>register</code> multiple times to register various controllers.
-Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code>Finatra</code> implements <code>main</code> for you.</p>
+Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code> implements <code>main</code> for you.</p>
       </section>
 
 
@@ -119,7 +119,10 @@ Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code
         <div class="page-header">
           <h2>Routing</h2>
         </div>
-        <p class="lead">Routes belong to a Controller. When Finatra receives a request for a particular URL, it will scan all registered controllers and dispatch to the first one that contains a match. For example:
+        <p class="lead">Routes belong to a <code>
+          <a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">
+            Controller</a></code>. When Finatra receives
+           a request for a particular URL, it will scan all registered controllers and dispatch to the first one that contains a match. For example:
         </p>
         <pre class="prettyprint">class Example extends Controller {
   get(&#34;/&#34;) { request =&gt;
@@ -212,7 +215,7 @@ get(&#34;/secret&#34;) { request =&gt;
       <div class="page-header">
         <h1>Futures</h1>
       </div>
-      <p class="lead">Every route is expected to a return a <a href="https://github.com/twitter/finagle#Using%20Future%20Objects">Future[Response]</a>, hence all the <code>.toFuture</code> calls you&#39;ve been seeing in our examples. This is an important distinction from synchronous frameworks as all your routes may be executed concurrently instead of one at a time. It&#39;s especially useful when dealing with libraries/services that return <code>Future</code>&#39;s themselves (like a finagle-http client):</p>
+      <p class="lead">Every route is expected to a return a <code>Future[Response]</code>, hence all the <code>.toFuture</code> calls you&#39;ve been seeing in our examples. This is an important distinction from synchronous frameworks as all your routes may be executed concurrently instead of one at a time. It&#39;s especially useful when dealing with libraries/services that return <code>Future</code>&#39;s themselves (like a finagle-http client):</p>
 <pre class="prettyprint">get(&#34;/current-time&#34;) { request =&gt;
   httpClient.apply(&#34;/api/time.txt&#34;) map { response =&gt;
     val currentTime = response.contentString()
@@ -221,6 +224,7 @@ get(&#34;/secret&#34;) { request =&gt;
 }</pre>
 <p class="lead">Note that we did not use <code>.toFuture</code> above because we are already within a <code>Future</code>.</p>
 
+<p class="lead">See <a href="https://github.com/twitter/finagle#Using%20Future%20Objects">Using Future Objects</a> for more details.</p>
 
     </section>
 
@@ -319,7 +323,7 @@ get(&#34;/secret&#34;) { request =&gt;
       <div class="page-header">
         <h1>Templates</h1>
       </div>
-      <p class="lead">Mustache is natively supported through <a href="https://github.com/spullara/mustache.java">Mustache.java</a>. First a <code>View</code> class must be defined:</p>
+      <p class="lead">Mustache is natively supported through <a href="https://github.com/spullara/mustache.java">Mustache.java</a>. First a <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/View.scala">View</a></code> class must be defined:</p>
 <pre class="prettyprint">class MyView extends View {
   val template = &#34;my_view.mustache&#34;
   val some_val = &#34;random value here&#34;
@@ -353,7 +357,7 @@ get(&#34;/secret&#34;) { request =&gt;
 <pre class="prettyprint">get(&#34;/deal-with-it&#34;) { request =&gt;
   render.static(&#34;/dealwithit.gif&#34;)
 }</pre>
-<p class="lead">It&#39;s important to note that the <code>Router</code> runs <i>before</i> the file server, allowing you to dynamically intercept static assets:</p>
+<p class="lead">It&#39;s important to note that the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Router.scala">Router</a></code> runs <i>before</i> the file server, allowing you to dynamically intercept static assets:</p>
 
 <pre class="prettyprint">get(&#34;/file.txt&#34;) { request =&gt;
   render.plain(&#34;this is the file&#34;).toFuture
@@ -461,7 +465,42 @@ get(&#34;/secret&#34;) { request =&gt;
       <div class="page-header">
         <h1>Filters</h1>
       </div>
-      <p class="lead">You can register Filters just like you can controllers and they will run before any Controller gets hit.</p>
+      <p class="lead">Filters are code that runs before any request is dispatched to a particular
+      <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>. They can modify the incoming request as well as the outbound response. A great example is our own <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/LoggingFilter.scala">LoggingFilter</a></code>:</p>
+<pre class="prettyprint">import com.twitter.finagle.{Service, SimpleFilter}
+import com.twitter.util.Future
+import com.twitter.finagle.http.{Request =&gt; FinagleRequest
+import com.twitter.finagle.http.{Response =&gt; FinagleResponse}
+import com.twitter.app.App
+
+class LoggingFilter
+  extends SimpleFilter[FinagleRequest, FinagleResponse] with App with Logging  {
+
+  def apply(
+    request: FinagleRequest,
+    service: Service[FinagleRequest, FinagleResponse])
+  ) = {
+    val start = System.currentTimeMillis()
+    service(request) map { response =&gt;
+      val end = System.currentTimeMillis()
+      val duration = end - start
+      log.info(&#34;%s %s %d %dms&#34;.format(request.method,
+                                      request.uri,
+                                      response.statusCode,
+                                      duration))
+      response
+    }
+  }
+}
+</pre>
+<p class="lead">You can register these inside <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>  like so:</p>
+
+<pre class="prettyprint">class MyServer extends FinatraServer
+  addFilter(new SimpleFilter)
+  register(new ExampleController)
+end
+</pre>
+
 
     </section>
 
@@ -474,7 +513,18 @@ get(&#34;/secret&#34;) { request =&gt;
       <div class="page-header">
         <h1>Logging</h1>
       </div>
-      <p class="lead">There is a logger object available inside every Controller</p>
+      <p class="lead">There is a <code>log</code> log object available inside every <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>
+        with the standard error levels (info, warn, error, etc):</p>
+        <pre class="prettyprint">post(&#34;/profile&#34;) { request =&gt;
+  try {
+    fetchProfileFromJankyServer()
+  } catch {
+    case exception =&gt; log.error(exception, &#34;something bad happened&#34;)
+  }
+  log.info(&#34;sending ok&#34;)
+  render.plain(&#34;ok&#34;).toFuture
+}</pre>
+
     </section>
 
 
@@ -488,10 +538,24 @@ get(&#34;/secret&#34;) { request =&gt;
       <div class="page-header">
         <h1>Stats</h1>
       </div>
+      <p class="lead">Theres also a default <code><a href="https://github.com/twitter/finagle/blob/master/finagle-core/src/main/scala/com/twitter/finagle/stats/StatsReceiver.scala">StatsReceiver</a></code> object available for recording metrics
+        named <code>stats</code>:</p>
+<pre class="prettyprint">post(&#34;/profile&#34;) { request =&gt;
+  try {
+    stats.counter(&#34;profile/attempts&#34;).incr
+    stats.time(&#34;profile/fetch&#34;) {
+      fetchProfileFromJankyServer()
+    }
+  } catch {
+    stats.counter(&#34;profile/fails&#34;).incr
+    case exception =&gt; log.error(exception, &#34;something bad happened&#34;)
+  }
+  log.info(&#34;sending ok&#34;)
+  render.plain(&#34;ok&#34;).toFuture
+}</pre>
+
+
     </section>
-
-
-
 
 
 
@@ -499,13 +563,32 @@ get(&#34;/secret&#34;) { request =&gt;
 
     <section id="testing">
       <div class="page-header">
-        <h1>Deployment</h1>
+        <h1>Testing</h1>
       </div>
+      <p class="lead">A test helper is included to make testing easy:</p>
+      <pre class="prettyprint">class AppSpec extends FlatSpecHelper {
+
+  val app = new App.ExampleApp
+
+  &#34;GET /&#34; should &#34;respond 200 with hi&#34; in {
+    get(&#34;/&#34;)
+    response.body should equal (&#34;hi&#34;)
+    response.code should equal (200)
+  }
+}</pre>
+
     </section>
 
-
-
-
+    <section id="deploying">
+      <div class="page-header">
+        <h1>Deploying</h1>
+      </div>
+      <p class="lead">The <code>pom.xml</code> of generated Finatra projects builds a single,
+        deployable &#34;fatjar&#34; with:</p>
+        <pre class="prettyprint">mvn package</pre>
+        <p class="lead">This produces a runnable jar  with scala, finatra, and any other dependent libraries included inside the <code>target/</code> directory.</p>
+        <p class="lead">If you are using Heroku, the included <code><a href="https://github.com/capotej/finatra/blob/master/script/finatra/share/Procfile">Procfile</a></code> will work out of the box.
+    </p></section>
 
   </div>
 </div>
@@ -516,6 +599,16 @@ get(&#34;/secret&#34;) { request =&gt;
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-29171624-2', 'finatra.info');
+  ga('send', 'pageview');
+
+</script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/prettify.js"></script>
