@@ -1,5 +1,47 @@
 <div id="main">
-  this is the index
+  <div class="row">
+    <div class="page-header">
+      <h1>Finatra Documentation</h1>
+    </div>
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav affix">
+        <li><a href="#routing"><i class="icon-chevron-right"></i>Routing</a></li>
+        <li><a href="#params"><i class="icon-chevron-right"></i>Params</a></li>
+      </ul>
+    </div>
+    <div class="span9">
+
+
+      <section id="routing">
+        <div class="page-header">
+          <h2>Routing</h2>
+        </div>
+        <pre class="prettyprint">
+get("/hello/:name") { request =>
+  val name = request.routeParams("name").getOrElse("default user")
+  render.plain("hello " + name).toFuture
+}</pre>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+    </section>
+
+    <section id="params">
+      <div class="page-header">
+        <h1>Params</h1>
+      </div>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+      <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+    </section>
+
+
+
+  </div>
+</div>
+</div>
 </div>
 <div id="nav">
   <ul class="nav">
