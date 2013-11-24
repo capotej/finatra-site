@@ -1,0 +1,32 @@
+  <ul class="nav">
+    {{ if eq .RelPermalink "/index.html"}}
+       <li class="active"><a class="brand" href="/">Finatra</a></li>
+    {{ else }}
+       <li><a class="brand" href="/">Finatra</a></li>
+    {{ end }}
+
+
+    {{ if eq .RelPermalink "/docs/tutorial.html"}}
+       <li class="active"><a href="/docs/tutorial.html">Tutorial</a></li>
+    {{ else }}
+       <li><a href="/docs/tutorial.html">Tutorial</a></li>
+    {{ end }}
+
+
+    {{ if eq .RelPermalink "/docs/index.html"}}
+       <li class="active"><a href="/docs/index.html">Documentation</a></li>
+    {{ else }}
+       <li><a href="/docs/index.html">Documentation</a></li>
+    {{ end }}
+
+
+    {{ if eq .RelPermalink "/docs/configuration.html"}}
+       <li class="active"><a href="/docs/configuration.html">Configuring</a></li>
+    {{ else }}
+       <li><a href="/docs/configuration.html">Configuring</a></li>
+    {{ end }}
+
+
+    <li><a href="http://github.com/capotej/finatra">Github</a></li>
+  </ul>
+
