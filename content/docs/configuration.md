@@ -1,8 +1,8 @@
 ---
-title: Configuration
+title: Configuration - Finatra
 date: "2013-07-01"
 ---
-<section id="flags">
+<section class="page">
     <div class="page-header">
      <h1>Flags</h1>
    </div>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Documentation</title>
+    <title>Documentation - Finatra</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -19,6 +19,10 @@
 
       .nav {
         font-size: 16px;
+      }
+
+      section.page {
+        padding: 0px;
       }
     </style>
     <link href="http://localhost:1313/assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -67,9 +71,8 @@
     
 
 
-    <li><a href="http://github.com/capotej/finatra">Github</a></li>
+    <li><a href="http://github.com/twitter/finatra">Github</a></li>
   </ul>
-
 
             </div>
           </div>
@@ -80,39 +83,39 @@
     <div class="container">
       <div id="main">
 
-          <p><div class="row">
-    <div class="page-header">
-      <h1>Finatra Documentation</h1>
-    </div>
-    <div class="span3 bs-docs-sidebar">
-      <ul class="nav nav-list bs-docs-sidenav affix">
-        <li><a href="#setup"><i class="icon-chevron-right"></i>Setup</a></li>
-        <li><a href="#routing"><i class="icon-chevron-right"></i>Routing</a></li>
-        <li><a href="#requests"><i class="icon-chevron-right"></i>Requests</a></li>
-        <li><a href="#futures"><i class="icon-chevron-right"></i>Futures</a></li>
-        <li><a href="#params"><i class="icon-chevron-right"></i>Params</a></li>
-        <li><a href="#responses"><i class="icon-chevron-right"></i>Responses</a></li>
-        <li><a href="#templates"><i class="icon-chevron-right"></i>Templates</a></li>
-        <li><a href="#assets"><i class="icon-chevron-right"></i>Assets</a></li>
-        <li><a href="#headers"><i class="icon-chevron-right"></i>Headers</a></li>
-        <li><a href="#cookies"><i class="icon-chevron-right"></i>Cookies</a></li>
-        <li><a href="#uploads"><i class="icon-chevron-right"></i>Uploads</a></li>
-        <li><a href="#filters"><i class="icon-chevron-right"></i>Filters</a></li>
-        <li><a href="#logging"><i class="icon-chevron-right"></i>Logging</a></li>
-        <li><a href="#stats"><i class="icon-chevron-right"></i>Stats</a></li>
-        <li><a href="#testing"><i class="icon-chevron-right"></i>Testing</a></li>
-        <li><a href="#deploying"><i class="icon-chevron-right"></i>Deploying</a></li>
-      </ul>
-    </div>
-    <div class="span9"></p>
-
+<section class="page">
+<div class="row">
+<div class="page-header">
+<h1>Finatra Documentation</h1>
+</div>
+<div class="span3 bs-docs-sidebar">
+<ul class="nav nav-list bs-docs-sidenav affix">
+<li><a href="#setup"><i class="icon-chevron-right"></i>Setup</a></li>
+<li><a href="#routing"><i class="icon-chevron-right"></i>Routing</a></li>
+<li><a href="#requests"><i class="icon-chevron-right"></i>Requests</a></li>
+<li><a href="#futures"><i class="icon-chevron-right"></i>Futures</a></li>
+<li><a href="#params"><i class="icon-chevron-right"></i>Params</a></li>
+<li><a href="#responses"><i class="icon-chevron-right"></i>Responses</a></li>
+<li><a href="#templates"><i class="icon-chevron-right"></i>Templates</a></li>
+<li><a href="#assets"><i class="icon-chevron-right"></i>Assets</a></li>
+<li><a href="#headers"><i class="icon-chevron-right"></i>Headers</a></li>
+<li><a href="#cookies"><i class="icon-chevron-right"></i>Cookies</a></li>
+<li><a href="#uploads"><i class="icon-chevron-right"></i>Uploads</a></li>
+<li><a href="#filters"><i class="icon-chevron-right"></i>Filters</a></li>
+<li><a href="#logging"><i class="icon-chevron-right"></i>Logging</a></li>
+<li><a href="#stats"><i class="icon-chevron-right"></i>Stats</a></li>
+<li><a href="#testing"><i class="icon-chevron-right"></i>Testing</a></li>
+<li><a href="#deploying"><i class="icon-chevron-right"></i>Deploying</a></li>
+</ul>
+</div>
+<div class="span9">
 <section id="setup">
-        <div class="page-header">
-          <h2>Setup</h2>
-        </div>
-          <p class="lead">  To get started, we have to define at least one <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code> and register it with <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>, like so:
-        </p>
-        <pre class="prettyprint">
+<div class="page-header">
+<h2>Setup</h2>
+</div>
+<p class="lead">  To get started, we have to define at least one <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code> and register it with <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>, like so:
+</p>
+<pre class="prettyprint">
 class Example extends Controller {
   get("/") { request =>
     render.plain("hi").toFuture
@@ -126,59 +129,55 @@ class MyServer extends FinatraServer {
 
 <p class="lead">You can call <code>register</code> multiple times to register various controllers.
 Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code> implements <code>main</code> for you.</p>
-      </section>
+</section>
 
-<pre><code>  &lt;section id=&quot;routing&quot;&gt;
-    &lt;div class=&quot;page-header&quot;&gt;
-      &lt;h2&gt;Routing&lt;/h2&gt;
-    &lt;/div&gt;
-    &lt;p class=&quot;lead&quot;&gt;Routes belong to a &lt;code&gt;
-      &lt;a href=&quot;https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala&quot;&gt;
-        Controller&lt;/a&gt;&lt;/code&gt;. When Finatra receives
-       a request for a particular URL, it will scan all registered controllers and dispatch to the first one that contains a match. For example:
-    &lt;/p&gt;
-    &lt;pre class=&quot;prettyprint&quot;&gt;
-</code></pre>
-
-<p>class Example extends Controller {
-  get(&ldquo;/&rdquo;) { request =&gt;
-    render.plain(&ldquo;hi&rdquo;).toFuture
+<section id="routing">
+<div class="page-header">
+<h2>Routing</h2>
+</div>
+<p class="lead">Routes belong to a <code>
+<a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">
+Controller</a></code>. When Finatra receives
+a request for a particular URL, it will scan all registered controllers and dispatch to the first one that contains a match. For example:
+</p>
+<pre class="prettyprint">
+class Example extends Controller {
+  get("/") { request =>
+    render.plain("hi").toFuture
   }
 }</pre>
-        <p class="lead">This code will run when a <code>GET</code> to <code>/</code> is sent and return &ldquo;hi&rdquo; in plaintext. All <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP verbs</a> are supported:</p></p>
+<p class="lead">This code will run when a <code>GET</code> to <code>/</code> is sent and return "hi" in plaintext. All <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP verbs</a> are supported:</p>
 
-<pre><code>    &lt;pre class=&quot;prettyprint&quot;&gt;
-</code></pre>
+<pre class="prettyprint">
+get("/users") { request =>
+  ...
+}
 
-<p>get(&ldquo;/users&rdquo;) { request =&gt;
-  &hellip;
-}</p>
+post("/users") { request =>
+  ...
+}
 
-<p>post(&ldquo;/users&rdquo;) { request =&gt;
-  &hellip;
-}</p>
+put("/users") { request =>
+  ...
+}
 
-<p>put(&ldquo;/users&rdquo;) { request =&gt;
-  &hellip;
-}</p>
-
-<p>options(&ldquo;/users&rdquo;) { request =&gt;
-  &hellip;
+options("/users") { request =>
+  ...
 }</pre>
-        <p class="lead">It&rsquo;s also possible render a route from another route, like:</p>
-        <pre class="prettyprint">
-get(&ldquo;/&rdquo;) { request =&gt;
-  route.get(&ldquo;/home&rdquo;)
-}</p>
+<p class="lead">It's also possible render a route from another route, like:</p>
+<pre class="prettyprint">
+get("/") { request =>
+  route.get("/home")
+}
 
-<p>get(&ldquo;/home&rdquo;) { request =&gt;
-  &hellip;
+get("/home") { request =>
+  ...
 }</pre>
 <p class="lead">You can even pass params through:</p>
 <pre class="prettyprint">
-get(&ldquo;/dog-search&rdquo;) { request =&gt;
-  route.post(&ldquo;/search&rdquo;, Map(&ldquo;q&rdquo; -&gt; &ldquo;dogs&rdquo;))
-}</pre></p>
+get("/dog-search") { request =>
+  route.post("/search", Map("q" -> "dogs"))
+}</pre>
 
 <p class="lead">Customize what happens when a route isn't found using <code>notFound</code>:</p>
 <pre class="prettyprint">
@@ -206,19 +205,13 @@ get("/secret") { request =>
   throw(new Unauthorized)
 }</pre>
 
-      </section>
+</section>
 
-
-
-
-
-
-
-    <section id="requests">
-      <div class="page-header">
-        <h1>Request</h1>
-      </div>
-      <p class="lead">You'll notice a <code>request</code> object is passed into your routing code, this has useful information about the request:</p>
+<section id="requests">
+<div class="page-header">
+  <h1>Request</h1>
+</div>
+<p class="lead">You'll notice a <code>request</code> object is passed into your routing code, this has useful information about the request:</p>
 <pre class="prettyprint">
 get("/request-info") { request =>
   println(request.remoteAddress)
@@ -228,20 +221,13 @@ get("/request-info") { request =>
 }</pre>
 <p class="lead">See <code><a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a></code> for more information.</p>
 
-<pre><code>&lt;/section&gt;
+</section>
 
-
-
-
-
-
-&lt;section id=&quot;futures&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Futures&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;Every route is expected to a return a &lt;code&gt;Future[Response]&lt;/code&gt;, hence all the &lt;code&gt;.toFuture&lt;/code&gt; calls you've been seeing in our examples. This is an important distinction from synchronous frameworks as all your routes may be executed concurrently instead of one at a time. It's especially useful when dealing with libraries/services that return &lt;code&gt;Future&lt;/code&gt;'s themselves (like a finagle-http client):&lt;/p&gt;
-</code></pre>
-
+<section id="futures">
+<div class="page-header">
+  <h1>Futures</h1>
+</div>
+<p class="lead">Every route is expected to a return a <code>Future[Response]</code>, hence all the <code>.toFuture</code> calls you've been seeing in our examples. This is an important distinction from synchronous frameworks as all your routes may be executed concurrently instead of one at a time. It's especially useful when dealing with libraries/services that return <code>Future</code>'s themselves (like a finagle-http client):</p>
 <pre class="prettyprint">
 get("/current-time") { request =>
   httpClient.apply("/api/time.txt") map { response =>
@@ -250,24 +236,14 @@ get("/current-time") { request =>
   }
 }</pre>
 <p class="lead">Note that we did not use <code>.toFuture</code> above because we are already within a <code>Future</code>.</p>
-
 <p class="lead">See <a href="https://github.com/twitter/finagle#Using%20Future%20Objects">Using Future Objects</a> for more details.</p>
+</section>
 
-    </section>
-
-
-
-
-
-
-
-
-
-    <section id="params">
-      <div class="page-header">
-        <h1>Params</h1>
-      </div>
-      <p class="lead">Query parameters are supported through <code>request.params</code>. This supports all the usual <code>Map</code> methods you are used to, like <code>getOrElse</code>:</p>
+<section id="params">
+<div class="page-header">
+<h1>Params</h1>
+</div>
+<p class="lead">Query parameters are supported through <code>request.params</code>. This supports all the usual <code>Map</code> methods you are used to, like <code>getOrElse</code>:</p>
 <pre class="prettyprint">
 get("/search") { request =>
   val query = request.params.getOrElse("q", "dogs")
@@ -280,18 +256,14 @@ get("/hello/:name") { request =>
   render.plain("you searced for " + query).toFuture
 }</pre>
 
-<pre><code>&lt;/section&gt;
 
+ </section>
 
-
-
-&lt;section id=&quot;responses&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Responses&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;The &lt;code&gt;render&lt;/code&gt; object is a powerful &lt;code&gt;Response&lt;/code&gt; builder that allows customizing the response in various ways:&lt;/p&gt;
-</code></pre>
-
+<section id="responses">
+<div class="page-header">
+  <h1>Responses</h1>
+</div>
+<p class="lead">The <code>render</code> object is a powerful <code>Response</code> builder that allows customizing the response in various ways:</p>
 <pre class="prettyprint">
 get("/i-want-json") { request =>
   render.json(Map("foo" -> "bar")).toFuture
@@ -353,14 +325,11 @@ get("/api/thing") { request =>
 <p class="lead">See the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Response.scala">Response</a></code> class for more details.</p>
     </section>
 
-
-
-
-    <section id="templates">
-      <div class="page-header">
-        <h1>Templates</h1>
-      </div>
-      <p class="lead">Mustache is natively supported through <a href="https://github.com/spullara/mustache.java">Mustache.java</a>. First a <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/View.scala">View</a></code> class must be defined:</p>
+<section id="templates">
+<div class="page-header">
+  <h1>Templates</h1>
+</div>
+<p class="lead">Mustache is natively supported through <a href="https://github.com/spullara/mustache.java">Mustache.java</a>. First a <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/View.scala">View</a></code> class must be defined:</p>
 <pre class="prettyprint">
 class MyView extends View {
   val template = "my_view.mustache"
@@ -382,20 +351,13 @@ get("/template") { request =>
 }</pre>
 
 <p class="lead">You can imagine more complex views taking constructor arguments and doing things conditionally from request input.</p>
+</section>
 
-<pre><code>&lt;/section&gt;
-
-
-
-
-
-&lt;section id=&quot;assets&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Assets&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;Theres an embedded static file server which will serve out of &lt;code&gt;src/main/resources/public&lt;/code&gt; by default. It's also possible to render assets inside of routes:&lt;/p&gt;
-</code></pre>
-
+<section id="assets">
+<div class="page-header">
+  <h1>Assets</h1>
+</div>
+<p class="lead">Theres an embedded static file server which will serve out of <code>src/main/resources/public</code> by default. It's also possible to render assets inside of routes:</p>
 <pre class="prettyprint">
 get("/deal-with-it") { request =>
   render.static("/dealwithit.gif")
@@ -406,20 +368,13 @@ get("/deal-with-it") { request =>
 get("/file.txt") { request =>
   render.plain("this is the file").toFuture
 }</pre>
+</section>
 
-<pre><code>&lt;/section&gt;
-
-
-
-
-
-&lt;section id=&quot;headers&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Headers&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;To read headers, use &lt;code&gt;request.headers&lt;/code&gt;; much like &lt;code&gt;request.params&lt;/code&gt;, this is also a &lt;code&gt;Map&lt;/code&gt;&lt;/p&gt;
-</code></pre>
-
+<section id="headers">
+<div class="page-header">
+<h1>Headers</h1>
+</div>
+<p class="lead">To read headers, use <code>request.headers</code>; much like <code>request.params</code>, this is also a <code>Map</code></p>
 <pre class="prettyprint">
 get("/") { request =>
   val isFoo = request.headers.getOrElse("X-Foo", "1")
@@ -449,15 +404,13 @@ get("/") { request =>
         .toFuture
 }</pre>
 
-<pre><code>&lt;/section&gt;
+</section>
 
-
-&lt;section id=&quot;cookies&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Cookies&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;Cookies, like &lt;code&gt;Headers&lt;/code&gt;, are read from &lt;code&gt;request&lt;/code&gt; and set via &lt;code&gt;render&lt;/code&gt;:&lt;/p&gt;
-</code></pre>
+<section id="cookies">
+<div class="page-header">
+<h1>Cookies</h1>
+</div>
+<p class="lead">Cookies, like <code>Headers</code>, are read from <code>request</code> and set via <code>render</code>:</p>
 
 <pre class="prettyprint">
 get("/") { request =>
@@ -481,19 +434,15 @@ get("/") { request =>
   render.plain("get:path").cookie(c).toFuture
 }</pre>
 
+
 <p class="lead">See the <code><a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Cookie.scala">Cookie</a></code> class for more details.</p>
-    </section>
+</section>
 
-
-
-
-
-
-  <section id="uploads">
-    <div class="page-header">
-      <h1>Uploads</h1>
-    </div>
-    <p class="lead">Uploads are fully supported in the <code>request.multiParams</code> object. </p>
+<section id="uploads">
+<div class="page-header">
+<h1>Uploads</h1>
+</div>
+<p class="lead">Uploads are fully supported in the <code>request.multiParams</code> object. </p>
 <pre class="prettyprint">
 post("/profile") { request =>
   request.multiParams.get("avatar").map { avatar =>
@@ -505,23 +454,15 @@ post("/profile") { request =>
 
 <p class="lead">See the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/MultipartItem.scala">MultipartItem</a></code> class for more details.</p>
 
-<pre><code>&lt;/section&gt;
 
+</section>
 
-
-
-
-
-
-
-&lt;section id=&quot;filters&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Filters&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;Filters are code that runs before any request is dispatched to a particular
-  &lt;code&gt;&lt;a href=&quot;https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala&quot;&gt;Controller&lt;/a&gt;&lt;/code&gt;. They can modify the incoming request as well as the outbound response. A great example is our own &lt;code&gt;&lt;a href=&quot;https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/LoggingFilter.scala&quot;&gt;LoggingFilter&lt;/a&gt;&lt;/code&gt;:&lt;/p&gt;
-</code></pre>
-
+<section id="filters">
+<div class="page-header">
+<h1>Filters</h1>
+</div>
+<p class="lead">Filters are code that runs before any request is dispatched to a particular
+<code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>. They can modify the incoming request as well as the outbound response. A great example is our own <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/LoggingFilter.scala">LoggingFilter</a></code>:</p>
 <pre class="prettyprint">
 import com.twitter.finagle.{Service, SimpleFilter}
 import com.twitter.util.Future
@@ -558,49 +499,34 @@ class MyServer extends FinatraServer
 end
 </pre>
 
-<pre><code>&lt;/section&gt;
 
+    </section>
 
-
-
-
-
-&lt;section id=&quot;logging&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Logging&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;There is a &lt;code&gt;log&lt;/code&gt; log object available inside every &lt;code&gt;&lt;a href=&quot;https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala&quot;&gt;Controller&lt;/a&gt;&lt;/code&gt;
-    with the standard error levels (info, warn, error, etc):&lt;/p&gt;
-    &lt;pre class=&quot;prettyprint&quot;&gt;
-</code></pre>
-
-<p>post(&ldquo;/profile&rdquo;) { request =&gt;
+<section id="logging">
+<div class="page-header">
+<h1>Logging</h1>
+</div>
+<p class="lead">There is a <code>log</code> log object available inside every <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>
+with the standard error levels (info, warn, error, etc):</p>
+<pre class="prettyprint">
+post("/profile") { request =>
   try {
     fetchProfileFromJankyServer()
   } catch {
-    case exception =&gt; log.error(exception, &ldquo;something bad happened&rdquo;)
+    case exception => log.error(exception, "something bad happened")
   }
-  log.info(&ldquo;sending ok&rdquo;)
-  render.plain(&ldquo;ok&rdquo;).toFuture
-}</pre></p>
+  log.info("sending ok")
+  render.plain("ok").toFuture
+}</pre>
 
-<pre><code>&lt;/section&gt;
+</section>
 
-
-
-
-
-
-
-
-&lt;section id=&quot;stats&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Stats&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;Theres also a default &lt;code&gt;&lt;a href=&quot;https://github.com/twitter/finagle/blob/master/finagle-core/src/main/scala/com/twitter/finagle/stats/StatsReceiver.scala&quot;&gt;StatsReceiver&lt;/a&gt;&lt;/code&gt; object available for recording metrics
-    named &lt;code&gt;stats&lt;/code&gt;:&lt;/p&gt;
-</code></pre>
-
+<section id="stats">
+<div class="page-header">
+<h1>Stats</h1>
+</div>
+<p class="lead">Theres also a default <code><a href="https://github.com/twitter/finagle/blob/master/finagle-core/src/main/scala/com/twitter/finagle/stats/StatsReceiver.scala">StatsReceiver</a></code> object available for recording metrics
+named <code>stats</code>:</p>
 <pre class="prettyprint">
 post("/profile") { request =>
   try {
@@ -619,44 +545,38 @@ post("/profile") { request =>
 <p class="lead">These can be collected by visiting <code>/admin/metrics.json</code> on the admin port, which is <code>:9990</code> by default.</p>
 <p class="lead">See the <a href="http://twitter.github.io/twitter-server/Features.html#http-admin-interface">HTTP Admin Interface</a> page of Twitter Server for more details.</p>
 
-<pre><code>&lt;/section&gt;
 
+</section>
 
+<section id="testing">
+<div class="page-header">
+<h1>Testing</h1>
+</div>
+<p class="lead">A test helper is included to make testing easy:</p>
+<pre class="prettyprint">
+class AppSpec extends FlatSpecHelper {
 
+  val app = new App.ExampleApp
 
-
-&lt;section id=&quot;testing&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Testing&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;A test helper is included to make testing easy:&lt;/p&gt;
-  &lt;pre class=&quot;prettyprint&quot;&gt;
-</code></pre>
-
-<p>class AppSpec extends FlatSpecHelper {</p>
-
-<p>val app = new App.ExampleApp</p>
-
-<p>&ldquo;GET /&rdquo; should &ldquo;respond 200 with hi&rdquo; in {
-    get(&ldquo;/&rdquo;)
-    response.body should equal (&ldquo;hi&rdquo;)
+  "GET /" should "respond 200 with hi" in {
+    get("/")
+    response.body should equal ("hi")
     response.code should equal (200)
   }
-}</pre></p>
+}</pre>
 
-<pre><code>&lt;/section&gt;
+</section>
 
-&lt;section id=&quot;deploying&quot;&gt;
-  &lt;div class=&quot;page-header&quot;&gt;
-    &lt;h1&gt;Deploying&lt;/h1&gt;
-  &lt;/div&gt;
-  &lt;p class=&quot;lead&quot;&gt;The &lt;code&gt;pom.xml&lt;/code&gt; of generated Finatra projects builds a single,
-    deployable &quot;fatjar&quot; with:&lt;/p&gt;
-    &lt;pre class=&quot;prettyprint&quot;&gt;mvn package&lt;/pre&gt;
-    &lt;p class=&quot;lead&quot;&gt;This produces a runnable jar  with scala, finatra, and any other dependent libraries included inside the &lt;code&gt;target/&lt;/code&gt; directory.&lt;/p&gt;
-    &lt;p class=&quot;lead&quot;&gt;If you are using Heroku, the included &lt;code&gt;&lt;a href=&quot;https://github.com/capotej/finatra/blob/master/script/finatra/share/Procfile&quot;&gt;Procfile&lt;/a&gt;&lt;/code&gt; will work out of the box.
-&lt;/section&gt;
-</code></pre>
+<section id="deploying">
+<div class="page-header">
+<h1>Deploying</h1>
+</div>
+<p class="lead">The <code>pom.xml</code> of generated Finatra projects builds a single,
+deployable "fatjar" with:</p>
+<pre class="prettyprint">mvn package</pre>
+<p class="lead">This produces a runnable jar  with scala, finatra, and any other dependent libraries included inside the <code>target/</code> directory.</p>
+<p class="lead">If you are using Heroku, the included <code><a href="https://github.com/capotej/finatra/blob/master/script/finatra/share/Procfile">Procfile</a></code> will work out of the box.
+</section>
 
 <p></div>
 </div>
