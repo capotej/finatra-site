@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8"/>
-    <title>Finatra</title>
+    <title>Documentation - Finatra</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
@@ -495,10 +495,10 @@ class LoggingFilter
 </pre>
 <p class="lead">You can register these inside <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>  like so:</p>
 
-<pre class="prettyprint">class MyServer extends FinatraServer
+<pre class="prettyprint">class MyServer extends FinatraServer {
   addFilter(new SimpleFilter)
   register(new ExampleController)
-end
+}
 </pre>
 
 
@@ -617,6 +617,6 @@ end
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/prettify.js"></script>
-  
+
 
 </body></html>

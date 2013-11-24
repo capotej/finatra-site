@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8"/>
-    <title>Finatra</title>
+    <title>Configuration - Finatra</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
@@ -89,6 +89,9 @@
 </pre>
 </section>
 
+<p class="lead">To turn features off, like the admin server, just pass an empty string instead of a port number:</p>
+<pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.adminPort=''</pre>
+
 <p class="lead">You can define your own flags inside <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>  for any application specific configuration:</p>
 <pre class="prettyprint">class MyServer extends FinatraServer {
   val thingFlag = flag(&#34;thingEnabled&#34;, true, &#34;Is the thing enabled&#34;)
@@ -141,6 +144,6 @@ global flags:
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/prettify.js"></script>
-  
+
 
 </body></html>
