@@ -8,9 +8,9 @@
     <meta name="author" content="">
 
     
-    <link href="http://finatra.info/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="http://finatra.info/assets/css/docs.css" rel="stylesheet">
-    <link href="http://finatra.info/assets/css/tomorrow.css" rel="stylesheet">
+    <link href="http://localhost:1313/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://localhost:1313/assets/css/docs.css" rel="stylesheet">
+    <link href="http://localhost:1313/assets/css/tomorrow.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -25,13 +25,13 @@
         padding: 0px;
       }
     </style>
-    <link href="http://finatra.info/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://localhost:1313/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     
     
 
-    <link rel="shortcut icon" href="http://finatra.info/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="http://finatra.info/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://localhost:1313/favicon.ico" type="image/x-icon">
   </head>
 
   <body onload="prettyPrint()" data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -49,26 +49,26 @@
             <div id="nav">
                 <ul class="nav">
     
-       <li><a class="brand" href="http://finatra.info/">Finatra</a></li>
+       <li><a class="brand" href="http://localhost:1313/">Finatra</a></li>
     
 
 
     
-       <li><a href="http://finatra.info/docs/tutorial.html">Tutorial</a></li>
+       <li><a href="http://localhost:1313/docs/tutorial.html">Tutorial</a></li>
     
 
 
     
-       <li><a href="http://finatra.info/docs/index.html">Documentation</a></li>
+       <li><a href="http://localhost:1313/docs/index.html">Documentation</a></li>
     
 
 
     
-       <li><a href="http://finatra.info/docs/configuration.html">Configuring</a></li>
+       <li><a href="http://localhost:1313/docs/configuration.html">Configuring</a></li>
     
 
     
-       <li class="active"><a href="http://finatra.info/roadmap.html">Roadmap</a></li>
+       <li class="active"><a href="http://localhost:1313/roadmap.html">Roadmap</a></li>
     
 
 
@@ -90,31 +90,37 @@
 <h1>Roadmap</h1>
 </div></p>
 
-<h2>Backlog</h2>
-
-<ul>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/17">0 deprecation/warnings</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/22">RequestAdapter does not support multiple values for query params</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/45">benchmark suite with caliper</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/54">apache-like directory browser for files</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/68">request.routeParams should be decoded</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/73">support ETAGS and/or Cache-Control headers in file server</a></li>
-</ul>
-
 <h2>1.4.3</h2>
 
 <ul>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/62">asset pipeline filter</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/63">flight/bower and bootstrap built in</a></li>
+<li><a href="https://github.com/twitter/finatra/issues/63">flight/bower and bootstrap built in</a> ✗</li>
+<li><a href="https://github.com/twitter/finatra/issues/62">asset pipeline filter</a> ✗</li>
 </ul>
 
 <h2>1.4.2</h2>
 
 <ul>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/70">refactored testing framework to allow each test to instantiate it&rsquo;s own controller</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/71">PUT and PATCH command param issue</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/74">enable full admin endpoints besides metrics.json</a></li>
-<li><a href="https://api.github.com/repos/twitter/finatra/issues/75">support in release scripts for dual publishing scala 2.9 and 2.10</a></li>
+<li><a href="https://github.com/twitter/finatra/issues/75">support in release scripts for dual publishing scala 2.9 and 2.10</a> ✗</li>
+<li><a href="https://github.com/twitter/finatra/issues/74">enable full admin endpoints besides metrics.json</a> ✗</li>
+<li><a href="https://github.com/twitter/finatra/issues/71">PUT and PATCH command param issue</a> ✗</li>
+<li><a href="https://github.com/twitter/finatra/pull/70">refactored testing framework to allow each test to instantiate it&rsquo;s own controller</a> ✗</li>
+</ul>
+
+<h2>1.4.1</h2>
+
+<ul>
+<li><a href="https://github.com/twitter/finatra/pull/67">Adding lazy service</a> ✓</li>
+<li><a href="https://github.com/twitter/finatra/pull/64">Fixed a bug with Inheritance using Mustache</a> ✓</li>
+</ul>
+
+<h2>1.4.0</h2>
+
+<ul>
+<li><a href="https://github.com/twitter/finatra/pull/52">Scala 2.10.2</a> ✓</li>
+<li><a href="https://github.com/twitter/finatra/issues/43">port back apache&rsquo;s multiupload handler</a> ✓</li>
+<li><a href="https://github.com/twitter/finatra/issues/42">move to com.twitter.common.metrics instead of ostrich.stats</a> ✓</li>
+<li><a href="https://github.com/twitter/finatra/issues/41">move to twitter-server once published</a> ✓</li>
+<li><a href="https://github.com/twitter/finatra/issues/39">Add public/ dir in src/main/resources as new docroot</a> ✓</li>
 </ul>
 
 </section>
@@ -150,8 +156,8 @@
 
 </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://finatra.info/assets/js/bootstrap.min.js"></script>
-    <script src="http://finatra.info/assets/js/prettify.js"></script>
+    <script src="http://localhost:1313/assets/js/bootstrap.min.js"></script>
+    <script src="http://localhost:1313/assets/js/prettify.js"></script>
   </body>
 </html>
 

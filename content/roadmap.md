@@ -4,24 +4,28 @@ title: Roadmap
 <div class="page-header">
 <h1>Roadmap</h1>
 </div>
-## Backlog
-
-  * [0 deprecation/warnings](https://api.github.com/repos/twitter/finatra/issues/17)
-  * [RequestAdapter does not support multiple values for query params](https://api.github.com/repos/twitter/finatra/issues/22)
-  * [benchmark suite with caliper](https://api.github.com/repos/twitter/finatra/issues/45)
-  * [apache-like directory browser for files](https://api.github.com/repos/twitter/finatra/issues/54)
-  * [request.routeParams should be decoded](https://api.github.com/repos/twitter/finatra/issues/68)
-  * [support ETAGS and/or Cache-Control headers in file server](https://api.github.com/repos/twitter/finatra/issues/73)
-
 ## 1.4.3
 
-  * [asset pipeline filter](https://api.github.com/repos/twitter/finatra/issues/62)
-  * [flight/bower and bootstrap built in](https://api.github.com/repos/twitter/finatra/issues/63)
+  * [flight/bower and bootstrap built in](https://github.com/twitter/finatra/issues/63) ✗
+  * [asset pipeline filter](https://github.com/twitter/finatra/issues/62) ✗
 
 ## 1.4.2
 
-  * [refactored testing framework to allow each test to instantiate it's own controller](https://api.github.com/repos/twitter/finatra/issues/70)
-  * [PUT and PATCH command param issue](https://api.github.com/repos/twitter/finatra/issues/71)
-  * [enable full admin endpoints besides metrics.json](https://api.github.com/repos/twitter/finatra/issues/74)
-  * [support in release scripts for dual publishing scala 2.9 and 2.10](https://api.github.com/repos/twitter/finatra/issues/75)
+  * [support in release scripts for dual publishing scala 2.9 and 2.10](https://github.com/twitter/finatra/issues/75) ✗
+  * [enable full admin endpoints besides metrics.json](https://github.com/twitter/finatra/issues/74) ✗
+  * [PUT and PATCH command param issue](https://github.com/twitter/finatra/issues/71) ✗
+  * [refactored testing framework to allow each test to instantiate it's own controller](https://github.com/twitter/finatra/pull/70) ✗
+
+## 1.4.1
+
+  * [Adding lazy service](https://github.com/twitter/finatra/pull/67) ✓
+  * [Fixed a bug with Inheritance using Mustache](https://github.com/twitter/finatra/pull/64) ✓
+
+## 1.4.0
+
+  * [Scala 2.10.2](https://github.com/twitter/finatra/pull/52) ✓
+  * [port back apache's multiupload handler](https://github.com/twitter/finatra/issues/43) ✓
+  * [move to com.twitter.common.metrics instead of ostrich.stats](https://github.com/twitter/finatra/issues/42) ✓
+  * [move to twitter-server once published](https://github.com/twitter/finatra/issues/41) ✓
+  * [Add public/ dir in src/main/resources as new docroot](https://github.com/twitter/finatra/issues/39) ✓
 
