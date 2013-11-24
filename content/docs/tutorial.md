@@ -4,7 +4,6 @@ date: "2013-07-01"
 linktitle: "tutorial"
 groups: ['docs']
 ---
-<section class="page">
 <div class="page-header">
 <h1>Getting a Finatra App</h1>
 </div>
@@ -25,16 +24,11 @@ groups: ['docs']
 </ol>
 </div>
 </div>
-</section>
-<section id="download-bootstrap">
 <div class="page-header">
 <h1>Starting the App</h1>
 </div>
 <p class="lead">Then just run <code>mvn scala:run</code> from the app directory and you should have a server running on port <code>:7070</code>!</p>
-</section>
-<section id="download-bootstrap">
 <div class="page-header">
 <h1>More information</h1>
 </div>
 <p class="lead">See the <a href="/docs/index.html">Documentation</a> or <a href="/docs/configuration.html">Configuration</a> for more information.</p>
-</section>

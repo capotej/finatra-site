@@ -8,9 +8,9 @@
     <meta name="author" content="">
 
     
-    <link href="http://localhost:1313/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="http://localhost:1313/assets/css/docs.css" rel="stylesheet">
-    <link href="http://localhost:1313/assets/css/tomorrow.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/docs.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/tomorrow.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -25,17 +25,13 @@
         padding: 0px;
       }
     </style>
-    <link href="http://localhost:1313/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     
     
 
-    
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:1313/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:1313/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:1313/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="http://localhost:1313/assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="http://localhost:1313/assets/ico/favicon.png">
+    <link rel="shortcut icon" href="http://finatra.info/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://finatra.info/favicon.ico" type="image/x-icon">
   </head>
 
   <body onload="prettyPrint()" data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -49,30 +45,36 @@
             <span class="icon-bar"></span>
           </button>
           <div class="nav-collapse collapse">
+
             <div id="nav">
                 <ul class="nav">
     
-       <li><a class="brand" href="http://localhost:1313/">Finatra</a></li>
+       <li><a class="brand" href="http://finatra.info/">Finatra</a></li>
     
 
 
     
-       <li><a href="http://localhost:1313/docs/tutorial.html">Tutorial</a></li>
+       <li><a href="http://finatra.info/docs/tutorial.html">Tutorial</a></li>
     
 
 
     
-       <li class="active"><a href="http://localhost:1313/docs/index.html">Documentation</a></li>
+       <li class="active"><a href="http://finatra.info/docs/index.html">Documentation</a></li>
     
 
 
     
-       <li><a href="http://localhost:1313/docs/configuration.html">Configuring</a></li>
+       <li><a href="http://finatra.info/docs/configuration.html">Configuring</a></li>
+    
+
+    
+       <li><a href="http://finatra.info/roadmap.html">Roadmap</a></li>
     
 
 
     <li><a href="http://github.com/twitter/finatra">Github</a></li>
   </ul>
+
 
             </div>
           </div>
@@ -82,9 +84,9 @@
 
     <div class="container">
       <div id="main">
+        <section class="page">
 
-<section class="page">
-<div class="row">
+<p><div class="row">
 <div class="page-header">
 <h1>Finatra Documentation</h1>
 </div>
@@ -117,19 +119,21 @@
 </p>
 <pre class="prettyprint">
 class Example extends Controller {
-  get("/") { request =>
-    render.plain("hi").toFuture
+  get(&ldquo;/&rdquo;) { request =&gt;
+    render.plain(&ldquo;hi&rdquo;).toFuture
   }
-}
+}</p>
 
-class MyServer extends FinatraServer {
+<p>class MyServer extends FinatraServer {
   val controller = new Example()
   register(controller)
-}</pre>
+}</pre></p>
 
 <p class="lead">You can call <code>register</code> multiple times to register various controllers.
 Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code> implements <code>main</code> for you.</p>
 </section>
+
+
 
 <section id="routing">
 <div class="page-header">
@@ -207,6 +211,12 @@ get("/secret") { request =>
 
 </section>
 
+
+
+
+
+
+
 <section id="requests">
 <div class="page-header">
   <h1>Request</h1>
@@ -221,7 +231,7 @@ get("/request-info") { request =>
 }</pre>
 <p class="lead">See <code><a href="https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/Request.scala">Request</a></code> for more information.</p>
 
-</section>
+<p></section></p>
 
 <section id="futures">
 <div class="page-header">
@@ -580,10 +590,25 @@ deployable "fatjar" with:</p>
 
 <p></div>
 </div>
-<center><img src="http://localhost:1313/assets/img/notepad.gif"></center></p>
+<center><img src="http://finatra.info/assets/img/notepad.gif"></center></p>
 
+</section>
      </div>
+
     </div>
+
+
+<div id="footer">
+  <div class="container">
+    <div class="row">
+    <div class="span10"></div>
+    <div class="span1">
+    <p class="text-muted credit"><a href="https://twitter.com/finatraweb" data-size="large" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @finatraweb</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+    </div>
+    </div>
+  </div>
+</div>
 
 
     
@@ -600,8 +625,8 @@ deployable "fatjar" with:</p>
 
 </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://localhost:1313/assets/js/bootstrap.min.js"></script>
-    <script src="http://localhost:1313/assets/js/prettify.js"></script>
+    <script src="http://finatra.info/assets/js/bootstrap.min.js"></script>
+    <script src="http://finatra.info/assets/js/prettify.js"></script>
   </body>
 </html>
 

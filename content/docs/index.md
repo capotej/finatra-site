@@ -4,7 +4,6 @@ date: "2013-07-01"
 linktitle: "documentation"
 groups: ['docs']
 ---
-<section class="page">
 <div class="row">
 <div class="page-header">
 <h1>Finatra Documentation</h1>

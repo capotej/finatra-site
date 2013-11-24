@@ -8,9 +8,9 @@
     <meta name="author" content="">
 
     
-    <link href="http://localhost:1313/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="http://localhost:1313/assets/css/docs.css" rel="stylesheet">
-    <link href="http://localhost:1313/assets/css/tomorrow.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/docs.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/tomorrow.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -25,17 +25,13 @@
         padding: 0px;
       }
     </style>
-    <link href="http://localhost:1313/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://finatra.info/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     
     
 
-    
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:1313/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:1313/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:1313/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="http://localhost:1313/assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="http://localhost:1313/assets/ico/favicon.png">
+    <link rel="shortcut icon" href="http://finatra.info/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://finatra.info/favicon.ico" type="image/x-icon">
   </head>
 
   <body onload="prettyPrint()" data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -49,30 +45,36 @@
             <span class="icon-bar"></span>
           </button>
           <div class="nav-collapse collapse">
+
             <div id="nav">
                 <ul class="nav">
     
-       <li><a class="brand" href="http://localhost:1313/">Finatra</a></li>
+       <li><a class="brand" href="http://finatra.info/">Finatra</a></li>
     
 
 
     
-       <li><a href="http://localhost:1313/docs/tutorial.html">Tutorial</a></li>
+       <li><a href="http://finatra.info/docs/tutorial.html">Tutorial</a></li>
     
 
 
     
-       <li><a href="http://localhost:1313/docs/index.html">Documentation</a></li>
+       <li><a href="http://finatra.info/docs/index.html">Documentation</a></li>
     
 
 
     
-       <li class="active"><a href="http://localhost:1313/docs/configuration.html">Configuring</a></li>
+       <li class="active"><a href="http://finatra.info/docs/configuration.html">Configuring</a></li>
+    
+
+    
+       <li><a href="http://finatra.info/roadmap.html">Roadmap</a></li>
     
 
 
     <li><a href="http://github.com/twitter/finatra">Github</a></li>
   </ul>
+
 
             </div>
           </div>
@@ -82,15 +84,15 @@
 
     <div class="container">
       <div id="main">
+        <section class="page">
 
-<section class="page">
-    <div class="page-header">
+<p><div class="page-header">
      <h1>Flags</h1>
    </div>
    <p class="lead">Finatra uses <a href="http://twitter.github.io/twitter-server/Features.html#flags">Flags</a> for configuration, passed as arguments:</p>
-   <pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.port=&#39;:7070&#39;</pre>
+   <pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.port=&#39;:7070&#39;</pre></p>
 
-   <p class="lead">Here&#39;s a full list of Flags available: (this is <code>-usage</code> output)</p>
+<p><p class="lead">Here&#39;s a full list of Flags available: (this is <code>-usage</code> output)</p>
   <pre class="prettyprint">global flags:
   -com.twitter.finatra.config.adminPort=&#39;:9990&#39;: Admin/Stats Port
   -com.twitter.finatra.config.appName=&#39;finatra&#39;: Name of server
@@ -108,8 +110,7 @@
   -com.twitter.finatra.config.port=&#39;:7070&#39;: Http Port
   -com.twitter.finatra.config.sslPort=&#39;:7443&#39;: Port for SSL
   -com.twitter.finatra.config.templatePath=&#39;/&#39;: path to templates
-</pre>
-</section>
+</pre></p>
 
 <p class="lead">To turn features off, like the admin server, just pass an empty string instead of a port number:</p>
 <pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.adminPort=''</pre>
@@ -144,8 +145,23 @@ global flags:
 <pre class="prettyprint">System.setProperty(&#34;com.twitter.finatra.config.pidEnabled&#34;, &#34;false&#34;)
 </pre></p>
 
+</section>
      </div>
+
     </div>
+
+
+<div id="footer">
+  <div class="container">
+    <div class="row">
+    <div class="span10"></div>
+    <div class="span1">
+    <p class="text-muted credit"><a href="https://twitter.com/finatraweb" data-size="large" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @finatraweb</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+    </div>
+    </div>
+  </div>
+</div>
 
 
     
@@ -162,8 +178,8 @@ global flags:
 
 </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://localhost:1313/assets/js/bootstrap.min.js"></script>
-    <script src="http://localhost:1313/assets/js/prettify.js"></script>
+    <script src="http://finatra.info/assets/js/bootstrap.min.js"></script>
+    <script src="http://finatra.info/assets/js/prettify.js"></script>
   </body>
 </html>
 

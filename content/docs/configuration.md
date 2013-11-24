@@ -2,7 +2,6 @@
 title: Configuration - Finatra
 date: "2013-07-01"
 ---
-<section class="page">
     <div class="page-header">
      <h1>Flags</h1>
    </div>
@@ -28,7 +27,6 @@ date: "2013-07-01"
   -com.twitter.finatra.config.sslPort=&#39;:7443&#39;: Port for SSL
   -com.twitter.finatra.config.templatePath=&#39;/&#39;: path to templates
 </pre>
-</section>
 
 <p class="lead">To turn features off, like the admin server, just pass an empty string instead of a port number:</p>
 <pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.adminPort=''</pre>

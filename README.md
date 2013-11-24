@@ -11,3 +11,9 @@
 ### Run hugo
 
     hugo server -w --source=. --uglyurls
+
+### Deploy 
+
+hugo --source=. --uglyurls
+
+### Upload public/

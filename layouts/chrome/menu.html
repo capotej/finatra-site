@@ -26,6 +26,13 @@
        <li><a href="/docs/configuration.html">Configuring</a></li>
     {{ end }}
 
+    {{ if eq .RelPermalink "/roadmap.html"}}
+       <li class="active"><a href="/roadmap.html">Roadmap</a></li>
+    {{ else }}
+       <li><a href="/roadmap.html">Roadmap</a></li>
+    {{ end }}
+
 
     <li><a href="http://github.com/twitter/finatra">Github</a></li>
   </ul>
+
