@@ -35,7 +35,7 @@ end
 File.open("../roadmap.md", "w") do |file|
 
   file.puts "---"
-  file.puts "title: Roadmap"
+  file.puts "title: Roadmap - Finatra"
   file.puts "layout: finatra"
   file.puts "---"
 

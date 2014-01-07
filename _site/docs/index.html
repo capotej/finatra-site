@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Documentation - Finatra</title>
+
+  <title>
+    Documentation - Finatra
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-
 
   <link href="/assets/css/bootstrap.css" rel="stylesheet">
   <link href="/assets/css/docs.css" rel="stylesheet">
@@ -402,10 +404,10 @@ get("/file.txt") { request =>
 <div class="page-header">
 <h1>Headers</h1>
 </div>
-<p class="lead">To read headers, use <code>request.headers</code>; much like <code>request.params</code>, this is also a <code>Map</code></p>
+<p class="lead">To read headers, use <code>request.headerMap</code>; much like <code>request.params</code>, this is also a <code>Map</code></p>
 <pre class="prettyprint">
 get("/") { request =>
-  val isFoo = request.headers.getOrElse("X-Foo", "1")
+  val isFoo = request.headerMap.getOrElse("X-Foo", "1")
   render.plain("X-Foo status: " + isFoo).toFuture
 }</pre>
 <p class="lead">Setting headers is available on the <code>Response</code> builder:</p>

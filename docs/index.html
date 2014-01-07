@@ -1,5 +1,5 @@
 ---
-title: "Documentation - Finatra"
+title: "Documentation"
 layout: finatra
 ---
 <div class="row">
@@ -327,10 +327,10 @@ get("/file.txt") { request =>
 <div class="page-header">
 <h1>Headers</h1>
 </div>
-<p class="lead">To read headers, use <code>request.headers</code>; much like <code>request.params</code>, this is also a <code>Map</code></p>
+<p class="lead">To read headers, use <code>request.headerMap</code>; much like <code>request.params</code>, this is also a <code>Map</code></p>
 <pre class="prettyprint">
 get("/") { request =>
-  val isFoo = request.headers.getOrElse("X-Foo", "1")
+  val isFoo = request.headerMap.getOrElse("X-Foo", "1")
   render.plain("X-Foo status: " + isFoo).toFuture
 }</pre>
 <p class="lead">Setting headers is available on the <code>Response</code> builder:</p>
