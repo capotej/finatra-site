@@ -1,0 +1,5 @@
+indexes:
+  posts: 'blog'
+  tag: 'tags'
+baseurl: 'http://finatra.info'
+...

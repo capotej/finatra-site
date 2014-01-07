@@ -1,0 +1,10 @@
+adasd
+  <div>
+    <h1>ada</h1>
+   <h1 id="title">{{ .Title }}</h1>
+   <ul id="all-tags">
+  {{ range .Site.Indexes.blog }}
+    <li><a href="/tags/{{ .Name | urlize }}">{{ .Title }}</a></li>
+  {{ end }}
+</ul>
+  </div>

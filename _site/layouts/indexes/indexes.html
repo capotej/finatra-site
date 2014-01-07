@@ -1,0 +1,17 @@
+<section id="menu">
+  <ul>
+    {{ range $index := .Site.Indexes.blog }}
+        <ul>
+          {{ range $key, $value := $index }}
+          <li> {{ $key }} </li>
+                <ul>
+                {{ range $value.Pages }}
+                    <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
+                {{ end }}
+                </ul>
+          {{ end }}
+        </ul>
+      </li>
+    {{ end }}
+  </ul>
+</section>
