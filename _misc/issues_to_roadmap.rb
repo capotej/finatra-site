@@ -32,10 +32,11 @@ roadmap = {}
   end
 end
 
-File.open("content/roadmap.md", "w") do |file|
+File.open("../roadmap.md", "w") do |file|
 
   file.puts "---"
   file.puts "title: Roadmap"
+  file.puts "layout: finatra"
   file.puts "---"
 
   file.puts '<div class="page-header">'
