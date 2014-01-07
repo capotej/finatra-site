@@ -106,7 +106,7 @@
 <div class="page-header">
 <h2>Setup</h2>
 </div>
-<p class="lead">  To get started, we have to define at least one <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code> and register it with <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>, like so:
+<p class="lead">  To get started, we have to define at least one <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code> and register it with <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>, like so:
 </p>
 <pre class="prettyprint">
 class Example extends Controller {
@@ -121,7 +121,7 @@ class MyServer extends FinatraServer {
 }</pre>
 
 <p class="lead">You can call <code>register</code> multiple times to register various controllers.
-Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code> implements <code>main</code> for you.</p>
+Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code> implements <code>main</code> for you.</p>
 </section>
 
 
@@ -131,7 +131,7 @@ Now you can use <code>MyServer</code> as your <code>mainClass</code> since <code
 <h2>Routing</h2>
 </div>
 <p class="lead">Routes belong to a <code>
-<a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">
+<a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">
 Controller</a></code>. When Finatra receives
 a request for a particular URL, it will scan all registered controllers and dispatch to the first one that contains a match. For example:
 </p>
@@ -339,7 +339,7 @@ get("/api/thing") { request =>
   }
 }</pre>
 
-<p class="lead">See the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Response.scala">Response</a></code> class for more details.</p>
+<p class="lead">See the <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/Response.scala">Response</a></code> class for more details.</p>
     </section>
 
 
@@ -349,7 +349,7 @@ get("/api/thing") { request =>
 <div class="page-header">
   <h1>Templates</h1>
 </div>
-<p class="lead">Mustache is natively supported through <a href="https://github.com/spullara/mustache.java">Mustache.java</a>. First a <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/View.scala">View</a></code> class must be defined:</p>
+<p class="lead">Mustache is natively supported through <a href="https://github.com/spullara/mustache.java">Mustache.java</a>. First a <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/View.scala">View</a></code> class must be defined:</p>
 <pre class="prettyprint">
 class MyView extends View {
   val template = "my_view.mustache"
@@ -386,7 +386,7 @@ get("/template") { request =>
 get("/deal-with-it") { request =>
   render.static("/dealwithit.gif")
 }</pre>
-<p class="lead">It's important to note that the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Router.scala">Router</a></code> runs <i>before</i> the file server, allowing you to dynamically intercept static assets:</p>
+<p class="lead">It's important to note that the <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/Router.scala">Router</a></code> runs <i>before</i> the file server, allowing you to dynamically intercept static assets:</p>
 
 <pre class="prettyprint">
 get("/file.txt") { request =>
@@ -486,7 +486,7 @@ post("/profile") { request =>
   render.plain("ok").toFuture
 }</pre>
 
-<p class="lead">See the <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/MultipartItem.scala">MultipartItem</a></code> class for more details.</p>
+<p class="lead">See the <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/MultipartItem.scala">MultipartItem</a></code> class for more details.</p>
 
 
 </section>
@@ -503,7 +503,7 @@ post("/profile") { request =>
 <h1>Filters</h1>
 </div>
 <p class="lead">Filters are code that runs before any request is dispatched to a particular
-<code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>. They can modify the incoming request as well as the outbound response. A great example is our own <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/LoggingFilter.scala">LoggingFilter</a></code>:</p>
+<code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>. They can modify the incoming request as well as the outbound response. A great example is our own <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/LoggingFilter.scala">LoggingFilter</a></code>:</p>
 <pre class="prettyprint">
 import com.twitter.finagle.{Service, SimpleFilter}
 import com.twitter.util.Future
@@ -531,7 +531,7 @@ class LoggingFilter
   }
 }
 </pre>
-<p class="lead">You can register these inside <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>  like so:</p>
+<p class="lead">You can register these inside <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/FinatraServer.scala">FinatraServer</a></code>  like so:</p>
 
 <pre class="prettyprint">
 class MyServer extends FinatraServer
@@ -552,7 +552,7 @@ end
 <div class="page-header">
 <h1>Logging</h1>
 </div>
-<p class="lead">There is a <code>log</code> log object available inside every <code><a href="https://github.com/capotej/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>
+<p class="lead">There is a <code>log</code> log object available inside every <code><a href="https://github.com/twitter/finatra/blob/master/src/main/scala/com/twitter/finatra/Controller.scala">Controller</a></code>
 with the standard error levels (info, warn, error, etc):</p>
 <pre class="prettyprint">
 post("/profile") { request =>
@@ -632,7 +632,7 @@ class AppSpec extends FlatSpecHelper {
 deployable "fatjar" with:</p>
 <pre class="prettyprint">mvn package</pre>
 <p class="lead">This produces a runnable jar  with scala, finatra, and any other dependent libraries included inside the <code>target/</code> directory.</p>
-<p class="lead">If you are using Heroku, the included <code><a href="https://github.com/capotej/finatra/blob/master/script/finatra/share/Procfile">Procfile</a></code> will work out of the box.
+<p class="lead">If you are using Heroku, the included <code><a href="https://github.com/twitter/finatra/blob/master/script/finatra/share/Procfile">Procfile</a></code> will work out of the box.
 </section>
 
 </div>
