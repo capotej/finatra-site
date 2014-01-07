@@ -1,19 +1,16 @@
 # Finatra Site
 
-### Install Go 1.2
+### Install Jekyll
 
-    brew install go --devel
+    gem install jeykll
 
-### Install hugo
+### Local Preview
 
-    go get github.com/spf13/hugo
-
-### Run hugo
-
-    hugo server -w --source=. --uglyurls
+    jeykll serve
 
 ### Deploy 
 
-hugo --source=. --uglyurls
+    jeykll build
 
-### Upload public/
+
+### Upload _site
