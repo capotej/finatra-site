@@ -18,7 +18,7 @@ groups: ['docs']
 <div class="span6">
 <h2>Generate your own</h2>
 <ol>
-<li><p class="lead">Download the latest Finatra <a href="https://github.com/capotej/finatra/archive/1.4.1.zip">release</a>.</p></li>
+<li><p class="lead">Download the latest Finatra <a href="https://github.com/twitter/finatra/archive/master.zip">release</a>.</p></li>
 <li><p class="lead">Generate your app with <code>./finatra new com.acme.MyAppName</code>.</p></li>
 <li><p class="lead">A directory called <code>MyAppName</code> wil be generated.</p></li>
 </ol>
