@@ -8,7 +8,7 @@ layout: finatra
    <p class="lead">Finatra uses <a href="http://twitter.github.io/twitter-server/Features.html#flags">Flags</a> for configuration, passed as arguments:</p>
    <pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.port=&#39;:7070&#39;</pre>
 
-   <p class="lead">Here&#39;s a full list of Flags available: (this is <code>-usage</code> output)</p>
+   <p class="lead">Here&#39;s a full list of Flags available: (this is <code>-help</code> output)</p>
   <pre class="prettyprint">global flags:
   -com.twitter.finatra.config.adminPort=&#39;:9990&#39;: Admin/Stats Port
   -com.twitter.finatra.config.appName=&#39;finatra&#39;: Name of server
@@ -41,7 +41,7 @@ layout: finatra
 }
 </pre>
 
-<p class="lead">Now if we run <code>-usage</code>, we&#39;ll see:</p>
+<p class="lead">Now if we run <code>-help</code>, we&#39;ll see:</p>
 
 <pre class="prettyprint">com.twitter.finatra_example.App:
   -help=&#39;false&#39;: Show this help
