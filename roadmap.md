@@ -1,14 +1,25 @@
 ---
-title: Roadmap
+title: Roadmap - Finatra
 layout: finatra
 ---
 <div class="page-header">
 <h1>Roadmap</h1>
 </div>
+## 1.6.x
+
+  * [CSRF Support](https://github.com/twitter/finatra/issues/89) ✗
+  * [Session support](https://github.com/twitter/finatra/issues/88) ✗
+  * [Configurable Key/Value store](https://github.com/twitter/finatra/issues/87) ✗
+  * [Response tied to originating request](https://github.com/twitter/finatra/issues/86) ✗
+  * [support ETAGS and/or Cache-Control headers in file server](https://github.com/twitter/finatra/issues/73) ✗
+
 ## 1.5.1
 
+  * [Test/Harden logging](https://github.com/twitter/finatra/issues/84) ✗
+  * [LogLevel doesn't seem to work](https://github.com/twitter/finatra/issues/83) ✗
   * [enable full admin endpoints besides metrics.json](https://github.com/twitter/finatra/issues/74) ✗
   * [refactored testing framework to allow each test to instantiate it's own controller](https://github.com/twitter/finatra/pull/70) ✗
+  * [request.routeParams should be decoded](https://github.com/twitter/finatra/issues/68) ✗
   * [flight/bower and bootstrap built in](https://github.com/twitter/finatra/issues/63) ✗
   * [asset pipeline filter](https://github.com/twitter/finatra/issues/62) ✗
 
