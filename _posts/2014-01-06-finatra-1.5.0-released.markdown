@@ -22,6 +22,8 @@ categories: ["blog", "releases"]
   <version>1.5.0</version>
 </dependency>
 ```
+### Download
+[https://github.com/twitter/finatra/archive/1.5.0a.zip](https://github.com/twitter/finatra/archive/1.5.0a.zip)
 
 <br>
 
@@ -49,10 +51,6 @@ The [example app](http://github.com/capotej/finatra-example), [Finatra itself](h
 
 <p class="lead">
 [12feaf](https://github.com/twitter/finatra/commit/12feaf27b56755446bb330ca91caf5ee0ee26fb9) Upgrade to finagle 6.10/twitter-server 1.4.0, fixing [#71](https://github.com/twitter/finatra/issues/71).
-
-
-
-
 
 
 
