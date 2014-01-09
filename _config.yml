@@ -1,3 +1,6 @@
-name: Your New Jekyll Site
+name: finatra.info
 markdown: redcarpet
 pygments: true
+description: the website for the finatra web framework
+url: http://finatra.info
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>finatra.info</title>
+		<description>the website for the finatra web framework</description>
+		<link>http://finatra.info</link>
+		<atom:link href="http://finatra.info/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Finatra 1.5.0 Released</title>
+				<description>&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;This is the first release to be dual published for scala 2.9.x and 2.10.x, as such the &lt;code&gt;artifactId&lt;/code&gt; has changed from finatra to &lt;code&gt;finatra_2.9.2&lt;/code&gt; or &lt;code&gt;finatra_2.10&lt;/code&gt;, respectively.&lt;/p&gt;
+
+&lt;h4&gt;SBT&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.0&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Maven&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;xml language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.twitter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;finatra_2.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Download&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/twitter/finatra/archive/1.5.0a.zip&quot;&gt;https://github.com/twitter/finatra/archive/1.5.0a.zip&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h2&gt;Header API change&lt;/h2&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+There is a breaking change in the way &lt;code&gt;request.headers&lt;/code&gt; are accessed: it now returns an &lt;a href=&quot;http://netty.io/3.8/api/org/jboss/netty/handler/codec/http/HttpHeaders.html&quot;&gt;HttpHeaders&lt;/a&gt; object instead of the previous &lt;a href=&quot;https://github.com/twitter/finagle/blob/master/finagle-http/src/main/scala/com/twitter/finagle/http/HeaderMap.scala&quot;&gt;HeaderMap&lt;/a&gt;, which is now located at &lt;code&gt;request.headerMap&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+Changing all &lt;code&gt;request.headers&lt;/code&gt; calls to &lt;code&gt;request.headerMap&lt;/code&gt; should be sufficient. For more examples, see these commits: &lt;a href=&quot;https://github.com/twitter/finagle/commit/6da615a1ec2bc1dfdd8e7de0716c67590afa39d3&quot;&gt;6da615&lt;/a&gt;, &lt;a href=&quot;https://github.com/twitter/finatra/commit/1dd6243fbf2fea2a3a20bbe1195f78299c0bb08c&quot;&gt;1dd624&lt;/a&gt; and &lt;a href=&quot;https://github.com/twitter/finatra/commit/b95119ab5b993caeaefed851c483660f3f3fa9fb&quot;&gt;b95119&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;strong&gt;Note&lt;/strong&gt;: &lt;code&gt;render.headers&lt;/code&gt; is not affected by this change.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h2&gt;SBT Support&lt;/h2&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+The &lt;a href=&quot;http://github.com/capotej/finatra-example&quot;&gt;example app&lt;/a&gt;, &lt;a href=&quot;https://github.com/twitter/finatra/blob/master/build.sbt&quot;&gt;Finatra itself&lt;/a&gt;, and the app generator are now all SBT compatible.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h2&gt;Bugfixes&lt;/h2&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/BenWhitehead/finatra/commit/6fc3003acf4a22bb5ee82acba6ad15b57a5a9ad3&quot;&gt;6fc3003&lt;/a&gt; Add Content-Length to responses.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/12feaf27b56755446bb330ca91caf5ee0ee26fb9&quot;&gt;12feaf&lt;/a&gt; Upgrade to finagle 6.10/twitter-server 1.4.0, fixing &lt;a href=&quot;https://github.com/twitter/finatra/issues/71&quot;&gt;#71&lt;/a&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 06 Jan 2014 16:29:18 +0000</pubDate>
+				<link>http://finatra.info//blog/releases/2014/01/06/finatra-1.5.0-released.html</link>
+				<guid isPermaLink="true">http://finatra.info//blog/releases/2014/01/06/finatra-1.5.0-released.html</guid>
+			</item>
+		
+	</channel>
+</rss>
+
