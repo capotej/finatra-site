@@ -7,6 +7,73 @@
 		<atom:link href="http://finatra.info/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Finatra 1.5.1 Released</title>
+				<description>&lt;h3&gt;Response internals fix&lt;/h3&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+It is now possible to modify the response &amp;quot;out of band&amp;quot;, since &lt;code&gt;Response&lt;/code&gt; is tied to &lt;code&gt;Request&lt;/code&gt; via &lt;code&gt;request.response&lt;/code&gt;. For example, in a &lt;a href=&quot;http://localhost:4000/docs/index.html#filters&quot;&gt;filter&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;
+class ExampleFilter
+  extends SimpleFilter[Request, Response] {
+
+  def apply(
+    request: FinagleRequest,
+    service: Service[Request, Response])
+  ) = {
+    request.response.headers.add(&quot;X-Filtered&quot;, &quot;True&quot;)
+    service(request)
+  }
+
+}
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+See &lt;a href=&quot;https://github.com/twitter/finatra/blob/master/src/test/scala/com/twitter/finatra/RequestResponseSpec.scala&quot;&gt;RequestResponseSpec&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h3&gt;Changelog&lt;/h3&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/75ebe3c23678bba40cff0493b7f9806cf27de883&quot;&gt;75ebe3&lt;/a&gt; Correctly set Content-Length for unicode JSON responses&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/1459817858f6dea218ab7de4861b3bba14ccadbc&quot;&gt;145981&lt;/a&gt; Depend on finagle-stats, fixes &lt;a href=&quot;https://github.com/twitter/finatra/issues/95&quot;&gt;#95&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/9037f13e7fce0dec361e86eb2e0fd6b5e1a5ca74&quot;&gt;9037f1&lt;/a&gt; Enable HTML escaping in mustache templates&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/83fa4f8d286fb21144861303ab4e79eb3250d082&quot;&gt;83fa4f&lt;/a&gt; Response tied to originating Request, fixes &lt;a href=&quot;https://github.com/twitter/finatra/issues/86&quot;&gt;#86&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/635b4dcaaf91ab6d0c39c0c9efb10ab24fa8fd36&quot;&gt;635b4d&lt;/a&gt; Test and fix for setting &lt;code&gt;logLevel&lt;/code&gt; correctly, fixing &lt;a href=&quot;https://github.com/twitter/finatra/issues/83&quot;&gt;#83&lt;/a&gt; and &lt;a href=&quot;https://github.com/twitter/finatra/issues/84&quot;&gt;#84&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/a95d3e5c5055405958ad8295919fb828bb5748eb&quot;&gt;a95d3e&lt;/a&gt; Adds all Admin endpoints, fixes &lt;a href=&quot;https://github.com/twitter/finatra/issues/74&quot;&gt;#74&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/d8c2beb4dcc3c4a7439f70b14ca3dd923571e870&quot;&gt;d8c2be&lt;/a&gt; &lt;code&gt;request.routeParams&lt;/code&gt; are now properly url decoded, fixing &lt;a href=&quot;https://github.com/twitter/finatra/issues/68&quot;&gt;#68&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h4&gt;SBT&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.1&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Maven&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;xml language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.twitter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;finatra_2.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+				<pubDate>Mon, 13 Jan 2014 16:29:18 +0000</pubDate>
+				<link>http://finatra.info//blog/releases/2014/01/13/finatra-1.5.1-released.html</link>
+				<guid isPermaLink="true">http://finatra.info//blog/releases/2014/01/13/finatra-1.5.1-released.html</guid>
+			</item>
+		
+			<item>
 				<title>Finatra 1.5.0 Released</title>
 				<description>&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;This is the first release to be dual published for scala 2.9.x and 2.10.x, as such the &lt;code&gt;artifactId&lt;/code&gt; has changed from finatra to &lt;code&gt;finatra_2.9.2&lt;/code&gt; or &lt;code&gt;finatra_2.10&lt;/code&gt;, respectively.&lt;/p&gt;
 
