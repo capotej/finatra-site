@@ -21,20 +21,20 @@ Finatra now generates a &lt;a href=&quot;http://bower.io/&quot;&gt;Bower&lt;/a&g
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
 Write tests for just a Controller instead of an entire app:&lt;/p&gt;
 
-&lt;pre class=&quot;prettyprint&quot;&gt;
-class SampleController extends Controller {
-  get(&quot;/testing&quot;) {
-    request =&gt; render.plain(&quot;hi&quot;).toFuture
-  }
-}
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleController&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/testing&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;hi&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toFuture&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-&quot;GET /testing&quot; should &quot;be 200&quot; in {
-  val app = MockApp(new SampleController)
-  val response = app.get(&quot;/testing&quot;)
-  response.code should be(200)
-  response.body should be(&quot;hi&quot;)
-}
-&lt;/pre&gt;
+&lt;span class=&quot;s&quot;&gt;&amp;quot;GET /testing&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;be 200&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MockApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/testing&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  
+  &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;hi&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
 See the &lt;a href=&quot;https://github.com/twitter/finatra/pull/70&quot;&gt;Pull Request&lt;/a&gt; for more details.&lt;/p&gt;
@@ -56,7 +56,7 @@ See the &lt;a href=&quot;https://github.com/twitter/finatra/pull/70&quot;&gt;Pul
 &lt;a href=&quot;https://github.com/twitter/finatra/commit/9c64c63519058cd40b6100ac86e35c828ec3801c&quot;&gt;9c64c6&lt;/a&gt; New test framework with MockApp.&lt;/p&gt;
 
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
-&lt;a href=&quot;https://github.com/twitter/finatra/commit/511b4fceaf75bb0c23523e5d97a494330a88ae07&quot;&gt;511b4f&lt;/a&gt; Generate bootstrap and bower config files.&lt;/p&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/511b4fceaf75bb0c23523e5d97a494330a88ae07&quot;&gt;511b4f&lt;/a&gt; Generate bootstrap and bower config files for new apps.&lt;/p&gt;
 
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 

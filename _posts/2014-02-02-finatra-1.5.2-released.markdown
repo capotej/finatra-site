@@ -16,7 +16,7 @@ Finatra now generates a [Bower](http://bower.io/) compatible app with
 <p class="lead">
 Write tests for just a Controller instead of an entire app:
 
-<pre class="prettyprint">
+{% highlight scala %}
 class SampleController extends Controller {
   get("/testing") {
     request => render.plain("hi").toFuture
@@ -26,10 +26,11 @@ class SampleController extends Controller {
 "GET /testing" should "be 200" in {
   val app = MockApp(new SampleController)
   val response = app.get("/testing")
+  
   response.code should be(200)
   response.body should be("hi")
 }
-</pre>
+{% endhighlight %}
 
 <p class="lead">
 See the [Pull Request](https://github.com/twitter/finatra/pull/70) for more details.
@@ -50,7 +51,7 @@ See the [Pull Request](https://github.com/twitter/finatra/pull/70) for more deta
 [9c64c6](https://github.com/twitter/finatra/commit/9c64c63519058cd40b6100ac86e35c828ec3801c) New test framework with MockApp.
 
 <p class="lead">
-[511b4f](https://github.com/twitter/finatra/commit/511b4fceaf75bb0c23523e5d97a494330a88ae07) Generate bootstrap and bower config files.
+[511b4f](https://github.com/twitter/finatra/commit/511b4fceaf75bb0c23523e5d97a494330a88ae07) Generate bootstrap and bower config files for new apps.
 
 <br/>
 
