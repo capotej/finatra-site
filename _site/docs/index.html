@@ -359,7 +359,7 @@ class MyView extends View {
 }
 </pre>
 
-<p class="lead">By default, this will look in <code>src/main/resources/my_view.mustache</code> for the template source, which could be:</p>
+<p class="lead">By default, this will look in <code>src/main/resources/templates/my_view.mustache</code> for the template source, which could be:</p>
 
 <pre class="prettyprint">
  &lt;h1&gt;Some value is &lt;/h1&gt;
@@ -509,7 +509,7 @@ post("/profile") { request =>
 <pre class="prettyprint">
 import com.twitter.finagle.{Service, SimpleFilter}
 import com.twitter.util.Future
-import com.twitter.finagle.http.{Request => FinagleRequest}
+import com.twitter.finagle.http.{Request => FinagleRequest
 import com.twitter.finagle.http.{Response => FinagleResponse}
 import com.twitter.app.App
 
@@ -518,7 +518,7 @@ class LoggingFilter
 
   def apply(
     request: FinagleRequest,
-    service: Service[FinagleRequest, FinagleResponse]
+    service: Service[FinagleRequest, FinagleResponse])
   ) = {
     val start = System.currentTimeMillis()
     service(request) map { response =>
