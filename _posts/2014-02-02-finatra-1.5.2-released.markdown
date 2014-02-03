@@ -53,6 +53,9 @@ See the [Pull Request](https://github.com/twitter/finatra/pull/70) for more deta
 <p class="lead">
 [511b4f](https://github.com/twitter/finatra/commit/511b4fceaf75bb0c23523e5d97a494330a88ae07) Generate bootstrap and bower config files for new apps.
 
+<p class="lead">
+[807859](https://github.com/twitter/finatra/commit/807859b4181244c2dc365493866adad4284ea5c9) Update twitter-server to 1.4.1 and finagle-stats to 6.11.1.
+
 <br/>
 
 #### SBT

@@ -58,6 +58,9 @@ See the &lt;a href=&quot;https://github.com/twitter/finatra/pull/70&quot;&gt;Pul
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
 &lt;a href=&quot;https://github.com/twitter/finatra/commit/511b4fceaf75bb0c23523e5d97a494330a88ae07&quot;&gt;511b4f&lt;/a&gt; Generate bootstrap and bower config files for new apps.&lt;/p&gt;
 
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/807859b4181244c2dc365493866adad4284ea5c9&quot;&gt;807859&lt;/a&gt; Update twitter-server to 1.4.1 and finagle-stats to 6.11.1.&lt;/p&gt;
+
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 
 &lt;h4&gt;SBT&lt;/h4&gt;
