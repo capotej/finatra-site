@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>
+    Finatra 1.5.1 Released - Finatra
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link href="/assets/css/bootstrap.css" rel="stylesheet">
+  <link href="/assets/css/docs.css" rel="stylesheet">
+  <link href="/assets/css/tomorrow.css" rel="stylesheet">
+  <style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  .nav {
+    font-size: 16px;
+  }
+
+  section.page {
+    padding: 0px;
+  }
+  </style>
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+
+
+
+  <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon">
+</head>
+
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-docs-sidebar">
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="nav-collapse collapse">
+
+          <div id="nav">
+            <ul class="nav">
+
+              <li ><a class="brand" href="/">Finatra</a></li>
+
+             <li class="active"><a href="/blog">Blog</a></li>
+
+             <li ><a href="/docs/tutorial.html">Tutorial</a></li>
+
+             <li ><a href="/docs/index.html">Documentation</a></li>
+
+             <li ><a href="/docs/configuration.html">Configuring</a></li>
+
+             <li ><a href="/roadmap.html">Roadmap</a></li>
+
+             <li><a href="http://github.com/twitter/finatra">Github</a></li>
+
+             <li><a href="https://groups.google.com/forum/#!forum/finatra-users">Forum</a></li>
+           </ul>
+
+
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <div class="container">
+  <div id="main">
+    <section class="page">
+
+      <div class="row">
+  <div class="span8">
+<h1><a href="/blog/releases/2014/01/13/finatra-1.5.1-released.html">Finatra 1.5.1 Released</a></h1>
+<p>by <a href="http://twitter.com/capotej">@capotej </a><span class="icon-time"></span> 13 Jan 2014 </p>
+
+<div class="post">
+  <h3>Response internals fix</h3>
+
+<p><p class="lead">
+It is now possible to modify the response &quot;out of band&quot;, since <code>Response</code> is tied to <code>Request</code> via <code>request.response</code>. For example, in a <a href="http://localhost:4000/docs/index.html#filters">filter</a>:</p>
+
+<pre class="prettyprint">
+class ExampleFilter
+  extends SimpleFilter[Request, Response] {
+
+  def apply(
+    request: FinagleRequest,
+    service: Service[Request, Response])
+  ) = {
+    request.response.headers.add("X-Filtered", "True")
+    service(request)
+  }
+
+}
+</pre>
+
+<p><p class="lead">
+See <a href="https://github.com/twitter/finatra/blob/master/src/test/scala/com/twitter/finatra/RequestResponseSpec.scala">RequestResponseSpec</a> for more details.</p>
+
+<p><br/></p>
+
+<h3>Changelog</h3>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/75ebe3c23678bba40cff0493b7f9806cf27de883">75ebe3</a> Correctly set Content-Length for unicode JSON responses</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/1459817858f6dea218ab7de4861b3bba14ccadbc">145981</a> Depend on finagle-stats, fixes <a href="https://github.com/twitter/finatra/issues/95">#95</a></p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/9037f13e7fce0dec361e86eb2e0fd6b5e1a5ca74">9037f1</a> Enable HTML escaping in mustache templates</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/83fa4f8d286fb21144861303ab4e79eb3250d082">83fa4f</a> Response tied to originating Request, fixes <a href="https://github.com/twitter/finatra/issues/86">#86</a></p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/635b4dcaaf91ab6d0c39c0c9efb10ab24fa8fd36">635b4d</a> Test and fix for setting <code>logLevel</code> correctly, fixing <a href="https://github.com/twitter/finatra/issues/83">#83</a> and <a href="https://github.com/twitter/finatra/issues/84">#84</a></p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/a95d3e5c5055405958ad8295919fb828bb5748eb">a95d3e</a> Adds all Admin endpoints, fixes <a href="https://github.com/twitter/finatra/issues/74">#74</a></p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/d8c2beb4dcc3c4a7439f70b14ca3dd923571e870">d8c2be</a> <code>request.routeParams</code> are now properly url decoded, fixing <a href="https://github.com/twitter/finatra/issues/68">#68</a></p>
+
+<p><br/></p>
+
+<h4>SBT</h4>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.1&quot;</span>
+</code></pre></div>
+<h4>Maven</h4>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>com.twitter<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>finatra_2.10<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.5.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</div>
+
+  <div class="span4">
+  </div>
+
+  </div>
+
+
+
+    </section>
+  </div>
+
+</div>
+
+
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="span10"></div>
+      <div class="span1">
+        <p class="text-muted credit"><a href="https://twitter.com/finatra" data-size="large" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @finatra</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-29171624-2', 'finatra.info');
+  ga('send', 'pageview');
+
+
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/prettify.js"></script>
+</body>
+</html>
+
