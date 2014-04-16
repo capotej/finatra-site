@@ -1,0 +1,54 @@
+---
+layout: post
+title:  "Finatra 1.5.3 Released"
+date:   2014-04-15 06:11:00
+categories: ["blog", "releases"]
+---
+
+<p class="lead">
+This is a huge bugfix release, thanks to [@grandbora](http://twitter.com/grandbora), [@manju](http://twitter.com/manju), [murz](http://github.com/murz), and [@beenokle](http://twitter.com/beenokle)!
+
+### Changelog
+
+<p class="lead">
+[330ea28](https://github.com/twitter/finatra/commit/330ea28) update to finagle 13.1, twitter-server 1.6.1.
+
+<p class="lead">
+[268636c](https://github.com/twitter/finatra/commit/268636c), [f541632](https://github.com/twitter/finatra/commit/f541632) Convenience wrappers for Finagle's HTTP status object.
+
+<p class="lead">
+[478fbd9](https://github.com/twitter/finatra/commit/478fbd9) Fix string interpolation on Scala 2.9.
+
+<p class="lead">
+[6e946ca](https://github.com/twitter/finatra/commit/6e946ca) Fix maxRequestSize config flag.
+
+<p class="lead">
+[e485028](https://github.com/twitter/finatra/commit/e485028) Content-Length is correctly set to 0 for empty responses now.
+
+<p class="lead">
+[6288fcb](https://github.com/twitter/finatra/commit/6288fcb) Updated legacy SpecHelper to support a body for POST, PUT and OPTIONS methods.
+
+<p class="lead">
+[e5b579c](https://github.com/twitter/finatra/commit/e5b579c) response.contentType method on ResponseBuilder.
+
+<p class="lead">
+[5615a67](https://github.com/twitter/finatra/commit/5615a67) Use byte length to calculate Content-Length.
+
+
+<br/>
+
+#### SBT
+
+```scala
+"com.twitter" %% "finatra" % "1.5.3"
+```
+
+#### Maven
+
+```xml
+<dependency>
+  <groupId>com.twitter</groupId>
+  <artifactId>finatra_2.10</artifactId>
+  <version>1.5.3</version>
+</dependency>
+```

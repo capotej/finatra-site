@@ -4,7 +4,7 @@
   <meta charset="utf-8">
 
   <title>
-    Home - Finatra
+    Finatra 1.5.3 Released - Finatra
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
@@ -52,9 +52,9 @@
           <div id="nav">
             <ul class="nav">
 
-              <li class="active"><a class="brand" href="/">Finatra</a></li>
+              <li ><a class="brand" href="/">Finatra</a></li>
 
-             <li ><a href="/blog">Blog</a></li>
+             <li class="active"><a href="/blog">Blog</a></li>
 
              <li ><a href="/docs/tutorial.html">Tutorial</a></li>
 
@@ -80,32 +80,60 @@
   <div id="main">
     <section class="page">
 
-      
+      <div class="row">
+  <div class="span8">
+<h1><a href="/blog/releases/2014/04/15/finatra-1.5.3-released.html">Finatra 1.5.3 Released</a></h1>
+<p>by <a href="http://twitter.com/capotej">@capotej </a><span class="icon-time"></span> 15 Apr 2014 </p>
 
-<h4>Latest news: <a href="/blog/releases/2014/04/15/finatra-1.5.3-released.html">Finatra 1.5.3 Released</a></h4>
-<div class="hero-unit">
-<h1>Finatra</h1>
-<h3>The scala web framework inspired by <a href="http://www.sinatrarb.com/">Sinatra</a> and powered by
-  <a href="http://twitter.github.io/twitter-server/">Twitter-Server</a></h3>
-  <div class="row">
-    <div class="span3">
-      <br/>
-      <h4>Features</h4>
-      <ul>
-        <li>Fully Async using <a href="http://twitter.github.io/effectivescala/#Concurrency-Futures">Futures</a></li>
-        <li><a href="https://github.com/spullara/mustache.java">Mustache</a> Templates</li>
-        <li>Detailed <a href="http://twitter.github.io/twitter-server/Features.html#metrics">Metrics</a> (p99,p999, etc)</li>
-        <li><a href="http://twitter.github.io/twitter-server/Features.html#http-admin-interface">Profile/Debug</a> over HTTP</li>
-        <li>SSL/TLS Support</li>
-        <li>Deploys with a single jar</li>
-      </ul>
-      <a href="/docs/tutorial.html" class="btn btn-primary btn-large">Get Started! »</a>
-    </div>
-    <div class="span7">
-      <img src="/assets/img/finatra_example.png"/>
-    </div>
-  </div>
+<div class="post">
+  <p><p class="lead">
+This is a huge bugfix release, thanks to <a href="http://twitter.com/grandbora">@grandbora</a>, <a href="http://twitter.com/manju">@manju</a>, <a href="http://github.com/murz">murz</a>, and <a href="http://twitter.com/beenokle">@beenokle</a>!</p>
+
+<h3>Changelog</h3>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/330ea28">330ea28</a> update to finagle 13.1, twitter-server 1.6.1.</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/268636c">268636c</a>, <a href="https://github.com/twitter/finatra/commit/f541632">f541632</a> Convenience wrappers for Finagle&#39;s HTTP status object.</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/478fbd9">478fbd9</a> Fix string interpolation on Scala 2.9.</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/6e946ca">6e946ca</a> Fix maxRequestSize config flag.</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/e485028">e485028</a> Content-Length is correctly set to 0 for empty responses now.</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/6288fcb">6288fcb</a> Updated legacy SpecHelper to support a body for POST, PUT and OPTIONS methods.</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/e5b579c">e5b579c</a> response.contentType method on ResponseBuilder.</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/5615a67">5615a67</a> Use byte length to calculate Content-Length.</p>
+
+<p><br/></p>
+
+<h4>SBT</h4>
+<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.3&quot;</span>
+</code></pre></div>
+<h4>Maven</h4>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>com.twitter<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>finatra_2.10<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.5.3<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
 </div>
+
+  <div class="span4">
+  </div>
+
+  </div>
+
 
 
     </section>

@@ -7,6 +7,54 @@
 		<atom:link href="http://finatra.info/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Finatra 1.5.3 Released</title>
+				<description>&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+This is a huge bugfix release, thanks to &lt;a href=&quot;http://twitter.com/grandbora&quot;&gt;@grandbora&lt;/a&gt;, &lt;a href=&quot;http://twitter.com/manju&quot;&gt;@manju&lt;/a&gt;, &lt;a href=&quot;http://github.com/murz&quot;&gt;murz&lt;/a&gt;, and &lt;a href=&quot;http://twitter.com/beenokle&quot;&gt;@beenokle&lt;/a&gt;!&lt;/p&gt;
+
+&lt;h3&gt;Changelog&lt;/h3&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/330ea28&quot;&gt;330ea28&lt;/a&gt; update to finagle 13.1, twitter-server 1.6.1.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/268636c&quot;&gt;268636c&lt;/a&gt;, &lt;a href=&quot;https://github.com/twitter/finatra/commit/f541632&quot;&gt;f541632&lt;/a&gt; Convenience wrappers for Finagle&amp;#39;s HTTP status object.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/478fbd9&quot;&gt;478fbd9&lt;/a&gt; Fix string interpolation on Scala 2.9.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/6e946ca&quot;&gt;6e946ca&lt;/a&gt; Fix maxRequestSize config flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/e485028&quot;&gt;e485028&lt;/a&gt; Content-Length is correctly set to 0 for empty responses now.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/6288fcb&quot;&gt;6288fcb&lt;/a&gt; Updated legacy SpecHelper to support a body for POST, PUT and OPTIONS methods.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/e5b579c&quot;&gt;e5b579c&lt;/a&gt; response.contentType method on ResponseBuilder.&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/5615a67&quot;&gt;5615a67&lt;/a&gt; Use byte length to calculate Content-Length.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h4&gt;SBT&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.3&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Maven&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;xml language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.twitter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;finatra_2.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.3&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+				<pubDate>Tue, 15 Apr 2014 06:11:00 +0000</pubDate>
+				<link>http://finatra.info//blog/releases/2014/04/15/finatra-1.5.3-released.html</link>
+				<guid isPermaLink="true">http://finatra.info//blog/releases/2014/04/15/finatra-1.5.3-released.html</guid>
+			</item>
+		
+			<item>
 				<title>Finatra 1.5.2 Released</title>
 				<description>&lt;h3&gt;Bootstrap and Bower built in&lt;/h3&gt;
 
