@@ -14,7 +14,7 @@ This is a huge bugfix release, thanks to &lt;a href=&quot;http://twitter.com/gra
 &lt;h3&gt;Changelog&lt;/h3&gt;
 
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
-&lt;a href=&quot;https://github.com/twitter/finatra/commit/330ea28&quot;&gt;330ea28&lt;/a&gt; update to finagle 13.1, twitter-server 1.6.1.&lt;/p&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/330ea28&quot;&gt;330ea28&lt;/a&gt; Update to finagle 13.1, twitter-server 1.6.1.&lt;/p&gt;
 
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
 &lt;a href=&quot;https://github.com/twitter/finatra/commit/268636c&quot;&gt;268636c&lt;/a&gt;, &lt;a href=&quot;https://github.com/twitter/finatra/commit/f541632&quot;&gt;f541632&lt;/a&gt; Convenience wrappers for Finagle&amp;#39;s HTTP status object.&lt;/p&gt;
