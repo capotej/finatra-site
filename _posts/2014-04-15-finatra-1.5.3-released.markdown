@@ -11,7 +11,7 @@ This is a huge bugfix release, thanks to [@grandbora](http://twitter.com/grandbo
 ### Changelog
 
 <p class="lead">
-[330ea28](https://github.com/twitter/finatra/commit/330ea28) update to finagle 13.1, twitter-server 1.6.1.
+[330ea28](https://github.com/twitter/finatra/commit/330ea28) Update to finagle 13.1, twitter-server 1.6.1.
 
 <p class="lead">
 [268636c](https://github.com/twitter/finatra/commit/268636c), [f541632](https://github.com/twitter/finatra/commit/f541632) Convenience wrappers for Finagle's HTTP status object.
