@@ -82,8 +82,8 @@
 
       <div class="row">
   <div class="span8">
-<h1><a href="/blog/releases/2014/02/02/finatra-1.5.2-released.html">Finatra 1.5.2 Released</a></h1>
-<p>by <a href="http://twitter.com/capotej">@capotej </a><span class="icon-time"></span> 02 Feb 2014 </p>
+<h1><a href="/blog/releases/2014/02/01/finatra-1.5.2-released.html">Finatra 1.5.2 Released</a></h1>
+<p>by <a href="http://twitter.com/capotej">@capotej </a><span class="icon-time"></span> 01 Feb 2014 </p>
 
 <div class="post">
   <h3>Bootstrap and Bower built in</h3>
@@ -99,7 +99,7 @@ Finatra now generates a <a href="http://bower.io/">Bower</a> compatible app with
 <p><p class="lead">
 Write tests for just a Controller instead of an entire app:</p>
 
-<div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">SampleController</span> <span class="k">extends</span> <span class="nc">Controller</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">SampleController</span> <span class="k">extends</span> <span class="nc">Controller</span> <span class="o">{</span>
   <span class="n">get</span><span class="o">(</span><span class="s">&quot;/testing&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">request</span> <span class="k">=&gt;</span> <span class="n">render</span><span class="o">.</span><span class="n">plain</span><span class="o">(</span><span class="s">&quot;hi&quot;</span><span class="o">).</span><span class="n">toFuture</span>
   <span class="o">}</span>
@@ -111,8 +111,7 @@ Write tests for just a Controller instead of an entire app:</p>
   
   <span class="n">response</span><span class="o">.</span><span class="n">code</span> <span class="n">should</span> <span class="n">be</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span>
   <span class="n">response</span><span class="o">.</span><span class="n">body</span> <span class="n">should</span> <span class="n">be</span><span class="o">(</span><span class="s">&quot;hi&quot;</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
+<span class="o">}</span></code></pre></div>
 
 <p><p class="lead">
 See the <a href="https://github.com/twitter/finatra/pull/70">Pull Request</a> for more details.</p>
@@ -142,10 +141,10 @@ See the <a href="https://github.com/twitter/finatra/pull/70">Pull Request</a> fo
 <p><br/></p>
 
 <h4>SBT</h4>
-<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.2&quot;</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.2&quot;</span>
 </code></pre></div>
 <h4>Maven</h4>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.twitter<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>finatra_2.10<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.5.2<span class="nt">&lt;/version&gt;</span>

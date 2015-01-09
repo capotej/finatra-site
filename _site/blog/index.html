@@ -83,8 +83,75 @@
       <div class="row">
   <div class="span8">
   
-<h1><a href="/blog/releases/2014/02/02/finatra-1.5.2-released.html">Finatra 1.5.2 Released</a></h1>
-<p>by <a href="http://twitter.com/capotej">@capotej </a><span class="icon-time"></span> 02 Feb 2014</p>
+<h1><a href="/blog/releases/2015/01/09/finatra-1.6.0-released.html">Finatra 1.6.0 Released</a></h1>
+<p>by <a href="http://twitter.com/capotej">@capotej </a><span class="icon-time"></span> 09 Jan 2015</p>
+
+<div class="post">
+  <h3>Last release for 1.x.x and Scala 2.9</h3>
+
+<p><p class="lead">
+As we prepare for the upcoming 2.x.x release, this will be the last 1.x.x release
+and also the last release to be published for scala 2.9.x.</p>
+
+<h3>New Finatra and Maintainer!</h3>
+
+<p><p class="lead">
+I&#39;m happy to announce that <a href="https://twitter.com/scosenza">Steve Cosenza</a> will be
+taking over the project for the 2.x.x release and beyond. We&#39;re excited to release
+the next major iteration of Finatra and share everything we&#39;ve learned using it in
+production at <a href="https://twitter.com">Twitter</a> over the course of a year.</p>
+
+<p><br/></p>
+
+<h3>Changelog</h3>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/d90c77dbd09fb74abacb437258f1d60bf92efd8d">d90c77</a> Can use ChannelBuffer&#39;s as Response</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/d73cbbf644f58ed1dd756f186b1e272e31b0ae39">d73cbb</a>, <a href="https://github.com/twitter/finatra/commit/8192716f00ae513358d1210645e4e47352be8e48">819271</a> Fix controller-specific ErrorHandler&#39;s</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/129184a90f4255a97e2983407b324747f8c218e4">129184</a> Fixed Heroku Deployments</p>
+
+<p><p class="lead">
+<a href="https://github.com/bpfoster/finatra/commit/04b5cbb9e71488d590eab76cffcc284685cbaa47">04b5cb</a> 2 Way SSL support</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/fcce1669c3b2e5a14d7a242db64b226f8be3b73b">fcce16</a> Quieter errors in the logs</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/33b1063d4c59d8ea82dc37f176484cde64f26bc8">33b106</a> Asset Directory browser! set com.twitter.finatra.showDirectories=true to enable</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/2edd33df0bd5a5be4d6161b7c8bd53954593939f">2edd33</a> Clean up build files, lock to twitter-server 1.7.3</p>
+
+<p><p class="lead">
+<a href="https://github.com/twitter/finatra/commit/982703ab79900d6a0e2ab7d6ff039accf0723979">982703</a> Remove scalatest dependency from jar, must now depend on it yourself</p>
+
+<p><br/></p>
+
+<h4>SBT</h4>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.6.0&quot;</span>
+</code></pre></div>
+<h4>Maven</h4>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>com.twitter<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>finatra_2.10<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.6.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</div>
+
+      <hr>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+  
+<h1><a href="/blog/releases/2014/02/01/finatra-1.5.2-released.html">Finatra 1.5.2 Released</a></h1>
+<p>by <a href="http://twitter.com/capotej">@capotej </a><span class="icon-time"></span> 01 Feb 2014</p>
 
 <div class="post">
   <h3>Bootstrap and Bower built in</h3>
@@ -100,7 +167,7 @@ Finatra now generates a <a href="http://bower.io/">Bower</a> compatible app with
 <p><p class="lead">
 Write tests for just a Controller instead of an entire app:</p>
 
-<div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">SampleController</span> <span class="k">extends</span> <span class="nc">Controller</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">SampleController</span> <span class="k">extends</span> <span class="nc">Controller</span> <span class="o">{</span>
   <span class="n">get</span><span class="o">(</span><span class="s">&quot;/testing&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">request</span> <span class="k">=&gt;</span> <span class="n">render</span><span class="o">.</span><span class="n">plain</span><span class="o">(</span><span class="s">&quot;hi&quot;</span><span class="o">).</span><span class="n">toFuture</span>
   <span class="o">}</span>
@@ -112,8 +179,7 @@ Write tests for just a Controller instead of an entire app:</p>
   
   <span class="n">response</span><span class="o">.</span><span class="n">code</span> <span class="n">should</span> <span class="n">be</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span>
   <span class="n">response</span><span class="o">.</span><span class="n">body</span> <span class="n">should</span> <span class="n">be</span><span class="o">(</span><span class="s">&quot;hi&quot;</span><span class="o">)</span>
-<span class="o">}</span>
-</code></pre></div>
+<span class="o">}</span></code></pre></div>
 
 <p><p class="lead">
 See the <a href="https://github.com/twitter/finatra/pull/70">Pull Request</a> for more details.</p>
@@ -143,10 +209,10 @@ See the <a href="https://github.com/twitter/finatra/pull/70">Pull Request</a> fo
 <p><br/></p>
 
 <h4>SBT</h4>
-<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.2&quot;</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.2&quot;</span>
 </code></pre></div>
 <h4>Maven</h4>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.twitter<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>finatra_2.10<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.5.2<span class="nt">&lt;/version&gt;</span>
@@ -216,10 +282,10 @@ See <a href="https://github.com/twitter/finatra/blob/master/src/test/scala/com/t
 <p><br/></p>
 
 <h4>SBT</h4>
-<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.1&quot;</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.1&quot;</span>
 </code></pre></div>
 <h4>Maven</h4>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.twitter<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>finatra_2.10<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.5.1<span class="nt">&lt;/version&gt;</span>
@@ -241,10 +307,10 @@ See <a href="https://github.com/twitter/finatra/blob/master/src/test/scala/com/t
   <p><p class="lead">This is the first release to be dual published for scala 2.9.x and 2.10.x, as such the <code>artifactId</code> has changed from finatra to <code>finatra_2.9.2</code> or <code>finatra_2.10</code>, respectively.</p>
 
 <h4>SBT</h4>
-<div class="highlight"><pre><code class="scala language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.0&quot;</span>
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="s">&quot;com.twitter&quot;</span> <span class="o">%%</span> <span class="s">&quot;finatra&quot;</span> <span class="o">%</span> <span class="s">&quot;1.5.0&quot;</span>
 </code></pre></div>
 <h4>Maven</h4>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.twitter<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>finatra_2.10<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>

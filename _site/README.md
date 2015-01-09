@@ -1,16 +1,16 @@
 # Finatra Site
 
-### Install Jekyll
+### Install Jekyll (ruby 1.9.2+)
 
-    gem install jeykll
+    bundle install --binstubs
 
 ### Local Preview
 
-    jeykll serve
+    ./bin/jeykll serve
 
 ### Deploy 
 
-    jeykll build
+    ./bin/jeykll build
 
 
 ### Upload _site

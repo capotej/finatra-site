@@ -245,7 +245,7 @@ get("/current-time") { request =>
   }
 }</pre>
 <p class="lead">Note that we did not use <code>.toFuture</code> above because we are already within a <code>Future</code>.</p>
-<p class="lead">See <a href="https://github.com/twitter/finagle#Using%20Future%20Objects">Using Future Objects</a> for more details.</p>
+<p class="lead">See <a href="http://twitter.github.io/finagle/guide/Futures.html">Concurrent Programming with Futures</a> for more details.</p>
 </section>
 
 
@@ -612,7 +612,26 @@ post("/profile") { request =>
 <div class="page-header">
 <h1>Testing</h1>
 </div>
-<p class="lead">A test helper is included to make testing easy:</p>
+
+<p class="lead">You can unit test your controllers using the MockApp helper:</p>
+<pre class="prettyprint">
+class SampleController extends Controller {
+  get("/testing") {
+    request => render.plain("hi").toFuture
+  }
+}
+
+"GET /testing" should "be 200" in {
+  val app = MockApp(new SampleController)
+  val response = app.get("/testing")
+
+  response.code should be(200)
+  response.body should be("hi")
+}
+</pre>
+
+
+<p class="lead">Alternatively, you can use SpecHelper trait to test the complete App:</p>
 <pre class="prettyprint">
 class AppSpec extends FlatSpecHelper {
 

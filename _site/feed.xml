@@ -7,6 +7,67 @@
 		<atom:link href="http://finatra.info/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Finatra 1.6.0 Released</title>
+				<description>&lt;h3&gt;Last release for 1.x.x and Scala 2.9&lt;/h3&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+As we prepare for the upcoming 2.x.x release, this will be the last 1.x.x release
+and also the last release to be published for scala 2.9.x.&lt;/p&gt;
+
+&lt;h3&gt;New Finatra and Maintainer!&lt;/h3&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+I&amp;#39;m happy to announce that &lt;a href=&quot;https://twitter.com/scosenza&quot;&gt;Steve Cosenza&lt;/a&gt; will be
+taking over the project for the 2.x.x release and beyond. We&amp;#39;re excited to release
+the next major iteration of Finatra and share everything we&amp;#39;ve learned using it in
+production at &lt;a href=&quot;https://twitter.com&quot;&gt;Twitter&lt;/a&gt; over the course of a year.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h3&gt;Changelog&lt;/h3&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/d90c77dbd09fb74abacb437258f1d60bf92efd8d&quot;&gt;d90c77&lt;/a&gt; Can use ChannelBuffer&amp;#39;s as Response&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/d73cbbf644f58ed1dd756f186b1e272e31b0ae39&quot;&gt;d73cbb&lt;/a&gt;, &lt;a href=&quot;https://github.com/twitter/finatra/commit/8192716f00ae513358d1210645e4e47352be8e48&quot;&gt;819271&lt;/a&gt; Fix controller-specific ErrorHandler&amp;#39;s&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/129184a90f4255a97e2983407b324747f8c218e4&quot;&gt;129184&lt;/a&gt; Fixed Heroku Deployments&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/bpfoster/finatra/commit/04b5cbb9e71488d590eab76cffcc284685cbaa47&quot;&gt;04b5cb&lt;/a&gt; 2 Way SSL support&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/fcce1669c3b2e5a14d7a242db64b226f8be3b73b&quot;&gt;fcce16&lt;/a&gt; Quieter errors in the logs&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/33b1063d4c59d8ea82dc37f176484cde64f26bc8&quot;&gt;33b106&lt;/a&gt; Asset Directory browser! set com.twitter.finatra.showDirectories=true to enable&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/2edd33df0bd5a5be4d6161b7c8bd53954593939f&quot;&gt;2edd33&lt;/a&gt; Clean up build files, lock to twitter-server 1.7.3&lt;/p&gt;
+
+&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
+&lt;a href=&quot;https://github.com/twitter/finatra/commit/982703ab79900d6a0e2ab7d6ff039accf0723979&quot;&gt;982703&lt;/a&gt; Remove scalatest dependency from jar, must now depend on it yourself&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h4&gt;SBT&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.6.0&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Maven&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.twitter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;finatra_2.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.6.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+				<pubDate>Fri, 09 Jan 2015 03:00:00 -0800</pubDate>
+				<link>http://finatra.info//blog/releases/2015/01/09/finatra-1.6.0-released.html</link>
+				<guid isPermaLink="true">http://finatra.info//blog/releases/2015/01/09/finatra-1.6.0-released.html</guid>
+			</item>
+		
+			<item>
 				<title>Finatra 1.5.2 Released</title>
 				<description>&lt;h3&gt;Bootstrap and Bower built in&lt;/h3&gt;
 
@@ -21,7 +82,7 @@ Finatra now generates a &lt;a href=&quot;http://bower.io/&quot;&gt;Bower&lt;/a&g
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
 Write tests for just a Controller instead of an entire app:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleController&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleController&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/testing&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;hi&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toFuture&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -33,8 +94,7 @@ Write tests for just a Controller instead of an entire app:&lt;/p&gt;
   
   &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;hi&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
 See the &lt;a href=&quot;https://github.com/twitter/finatra/pull/70&quot;&gt;Pull Request&lt;/a&gt; for more details.&lt;/p&gt;
@@ -64,18 +124,18 @@ See the &lt;a href=&quot;https://github.com/twitter/finatra/pull/70&quot;&gt;Pul
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 
 &lt;h4&gt;SBT&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.2&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.2&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;Maven&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;xml language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.twitter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;finatra_2.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-				<pubDate>Sun, 02 Feb 2014 06:11:00 +0000</pubDate>
-				<link>http://finatra.info//blog/releases/2014/02/02/finatra-1.5.2-released.html</link>
-				<guid isPermaLink="true">http://finatra.info//blog/releases/2014/02/02/finatra-1.5.2-released.html</guid>
+				<pubDate>Sat, 01 Feb 2014 22:11:00 -0800</pubDate>
+				<link>http://finatra.info//blog/releases/2014/02/01/finatra-1.5.2-released.html</link>
+				<guid isPermaLink="true">http://finatra.info//blog/releases/2014/02/01/finatra-1.5.2-released.html</guid>
 			</item>
 		
 			<item>
@@ -131,16 +191,16 @@ See &lt;a href=&quot;https://github.com/twitter/finatra/blob/master/src/test/sca
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 
 &lt;h4&gt;SBT&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.1&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.1&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;Maven&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;xml language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.twitter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;finatra_2.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-				<pubDate>Mon, 13 Jan 2014 16:29:18 +0000</pubDate>
+				<pubDate>Mon, 13 Jan 2014 08:29:18 -0800</pubDate>
 				<link>http://finatra.info//blog/releases/2014/01/13/finatra-1.5.1-released.html</link>
 				<guid isPermaLink="true">http://finatra.info//blog/releases/2014/01/13/finatra-1.5.1-released.html</guid>
 			</item>
@@ -150,10 +210,10 @@ See &lt;a href=&quot;https://github.com/twitter/finatra/blob/master/src/test/sca
 				<description>&lt;p&gt;&lt;p class=&quot;lead&quot;&gt;This is the first release to be dual published for scala 2.9.x and 2.10.x, as such the &lt;code&gt;artifactId&lt;/code&gt; has changed from finatra to &lt;code&gt;finatra_2.9.2&lt;/code&gt; or &lt;code&gt;finatra_2.10&lt;/code&gt;, respectively.&lt;/p&gt;
 
 &lt;h4&gt;SBT&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;scala language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.0&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;com.twitter&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;finatra&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1.5.0&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4&gt;Maven&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;xml language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.twitter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;finatra_2.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
@@ -193,7 +253,7 @@ The &lt;a href=&quot;http://github.com/capotej/finatra-example&quot;&gt;example 
 &lt;p&gt;&lt;p class=&quot;lead&quot;&gt;
 &lt;a href=&quot;https://github.com/twitter/finatra/commit/12feaf27b56755446bb330ca91caf5ee0ee26fb9&quot;&gt;12feaf&lt;/a&gt; Upgrade to finagle 6.10/twitter-server 1.4.0, fixing &lt;a href=&quot;https://github.com/twitter/finatra/issues/71&quot;&gt;#71&lt;/a&gt;.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 06 Jan 2014 16:29:18 +0000</pubDate>
+				<pubDate>Mon, 06 Jan 2014 08:29:18 -0800</pubDate>
 				<link>http://finatra.info//blog/releases/2014/01/06/finatra-1.5.0-released.html</link>
 				<guid isPermaLink="true">http://finatra.info//blog/releases/2014/01/06/finatra-1.5.0-released.html</guid>
 			</item>

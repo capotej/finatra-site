@@ -1,16 +1,18 @@
 # Finatra Site
 
-### Install Jekyll
+### Install Jekyll (ruby 1.9.2+)
 
-    gem install jeykll
+    bundle install --binstubs
 
 ### Local Preview
 
-    jeykll serve
+    ./bin/jeykll serve
 
 ### Deploy 
 
-    jeykll build
+    ./bin/jeykll build
 
 
-### Upload _site
+### Upload _site (public key needs to be added to nearlyfreespeech)
+
+    rsync -avz -e ssh _site/* capotej_finatra@ssh.phx.nearlyfreespeech.net:
