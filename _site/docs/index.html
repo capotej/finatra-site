@@ -653,7 +653,9 @@ class AppSpec extends FlatSpecHelper {
 <p class="lead">The <code>pom.xml</code> of generated Finatra projects builds a single,
 deployable "fatjar" with:</p>
 <pre class="prettyprint">mvn package</pre>
-<p class="lead">This produces a runnable jar  with scala, finatra, and any other dependent libraries included inside the <code>target/</code> directory.</p>
+<p class="lead">This produces a runnable jar  with scala, finatra, and any other dependent libraries included inside the <code>target/</code> directory.  Then you can run the jar via:</p>
+<pre class="prettyprint">java -jar target/finatra_app.jar -com.twitter.finatra.config.env='production'</pre>
+<p class="lead">to serve both generated html and assets in <code>src/main/resources/public</code>.</p>
 <p class="lead">If you are using Heroku, the included <code><a href="https://github.com/twitter/finatra/blob/master/script/finatra/share/Procfile">Procfile</a></code> will work out of the box.
 </section>
 
